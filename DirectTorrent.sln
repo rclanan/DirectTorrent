@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic", "Business Logic", "{E08E3848-6560-42EC-998F-EE7E55F6D961}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1C94DE42-5314-4878-BEA4-4E155AC0497E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.Mappers", "DirectTorrent.Data.Mappers\DirectTorrent.Data.Mappers.csproj", "{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Models", "DirectTorrent.Models\DirectTorrent.Models.csproj", "{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5F000477-FF77-45EB-A750-C4CE237E6AEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.WPFClient", "DirectTorrent.WPFClient\DirectTorrent.WPFClient.csproj", "{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17} = {1C94DE42-5314-4878-BEA4-4E155AC0497E}
+		{40CF7AFF-229E-4E0D-83A1-8C4655A34F0F} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
+		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B} = {5F000477-FF77-45EB-A750-C4CE237E6AEC}
+	EndGlobalSection
+EndGlobal
