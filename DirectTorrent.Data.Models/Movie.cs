@@ -3,16 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DirectTorrent.Models
+using System.Drawing;
+using System.Net;
+using System.IO;
+using DirectTorrent.Data.ApiWrappers;
+using Newtonsoft.Json;
+
+namespace DirectTorrent.Data.Models
 {
     public class Movie
     {
-        public string MovieID { get; set; }
+        #region Properties
+        public int MovieID { get; set; }
         public string State { get; set; }
         public string MovieUrl { get; set; }
         public string MovieTitle { get; set; }
         public string MovieTitleClean { get; set; }
-        public string MovieYear { get; set; }
+        public int MovieYear { get; set; }
         public string AgeRating { get; set; }
         public string DateUploaded { get; set; }
         public int DateUploadedEpoch { get; set; }
@@ -21,16 +28,24 @@ namespace DirectTorrent.Models
         public string ImdbCode { get; set; }
         public string ImdbLink { get; set; }
         public string Size { get; set; }
-        public string SizeByte { get; set; }
-        public string MovieRating { get; set; }
+        public int SizeByte { get; set; }
+        public float MovieRating { get; set; }
         public string Genre { get; set; }
         public string Uploader { get; set; }
-        public string UploaderUID { get; set; }
-        public string Downloaded { get; set; }
-        public string TorrentSeeds { get; set; }
-        public string TorrentPeers { get; set; }
+        public int UploaderUID { get; set; }
+        public int Downloaded { get; set; }
+        public int TorrentSeeds { get; set; }
+        public int TorrentPeers { get; set; }
         public string TorrentUrl { get; set; }
         public string TorrentHash { get; set; }
         public string TorrentMagnetUrl { get; set; }
+        #endregion
+
+
+        public Movie PopulateModel()
+        {
+            YifyWrapper yify = new YifyWrapper();
+            return JsonConvert.DeserializeObject<MovieSet>(yify.Map()).MovieList[0];
+        }
     }
 }

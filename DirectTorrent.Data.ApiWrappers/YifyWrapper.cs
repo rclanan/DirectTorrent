@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Newtonsoft.Json;
-using DirectTorrent.Models;
 using System.Net;
+using System.IO;
 
-namespace DirectTorrent.Data.Mappers
+namespace DirectTorrent.Data.ApiWrappers
 {
-    public class YifyMapper
+    public class YifyWrapper
     {
-        public List<Movie>  void Map()
+        public string Map()
         {
             WebRequest request = WebRequest.Create(
             "https://yts.re/api/list.json");
+            request.Proxy = null;
             WebResponse response = request.GetResponse();
             Stream dataStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(dataStream);
             string responseFromServer = reader.ReadToEnd();
-            Console.WriteLine(responseFromServer);
             reader.Close();
             response.Close();
-            Movies filmovi = JsonConvert.DeserializeObject<Movies>(responseFromServer);
-            return filmovi;
+            return responseFromServer;
         }
     }
 }

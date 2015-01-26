@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}</ProjectGuid>
+    <ProjectGuid>{ECE0509F-B1FB-4D99-AFB4-58361D5E324A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectTorrent.Data.Mappers</RootNamespace>
-    <AssemblyName>DirectTorrent.Data.Mappers</AssemblyName>
+    <RootNamespace>DirectTorrent.Data.Models</RootNamespace>
+    <AssemblyName>DirectTorrent.Data.Models</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,13 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="YifyMapper.cs" />
+    <Compile Include="Movie.cs" />
+    <Compile Include="MovieSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DirectTorrent.Models\DirectTorrent.Models.csproj">
-      <Project>{40cf7aff-229e-4e0d-83a1-8c4655a34f0f}</Project>
-      <Name>DirectTorrent.Models</Name>
+    <ProjectReference Include="..\DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.ApiWrappers.csproj">
+      <Project>{8ccf7c6e-42cb-4646-a22b-0c5e42d11e17}</Project>
+      <Name>DirectTorrent.Data.ApiWrappers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
