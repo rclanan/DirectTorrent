@@ -1,25 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b4cdbc5d-7190-4da1-ad37-340e4c8b4c47" name="DirectTorrent" linkedPackageId="21790419-7978-4215-85c5-ef42beecc112" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="38f5e998-9146-4874-bb98-399919ad696f">
-      <profileInstance Id="9e4a6d5f-d5ae-4493-8a8f-f56d883855fe" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="624d3062-b704-4398-bccc-ac3bc68ad4ba">
-      <profileInstance Id="ad05101d-f562-4362-9cc1-91e7a2e25902" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="67291f36-87bb-4d90-b018-a255e828231b">
-      <profileInstance Id="c02edc75-1d7d-4267-a0bc-79e85557a213" name="CSharpProfile">
-        <elementDefinition Id="078fd5b9-9520-4b28-8940-b29d459b969d" />
-      </profileInstance>
-      <elementDefinition Id="1976d204-018a-4d26-b975-251a3a579b39" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="83b95b87-1ba7-496b-bad0-7ea0e9d9d8d8" name="Movie" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -3334,5 +3314,25 @@
   </packagedElements>
   <package Id="21790419-7978-4215-85c5-ef42beecc112" name="DirectTorrent.Modeling">
     <elementDefinition Id="b847f264-b326-4b32-9cba-8bfe37014c25" />
+    <profileInstances>
+      <packageHasProfileInstances Id="38f5e998-9146-4874-bb98-399919ad696f">
+        <profileInstance Id="9e4a6d5f-d5ae-4493-8a8f-f56d883855fe" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="624d3062-b704-4398-bccc-ac3bc68ad4ba">
+        <profileInstance Id="ad05101d-f562-4362-9cc1-91e7a2e25902" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="67291f36-87bb-4d90-b018-a255e828231b">
+        <profileInstance Id="c02edc75-1d7d-4267-a0bc-79e85557a213" name="CSharpProfile">
+          <elementDefinition Id="078fd5b9-9520-4b28-8940-b29d459b969d" />
+        </profileInstance>
+        <elementDefinition Id="1976d204-018a-4d26-b975-251a3a579b39" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
