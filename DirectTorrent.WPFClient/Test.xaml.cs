@@ -25,10 +25,8 @@ namespace DirectTorrent.WPFClient
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Domain.Models.Movie film = new Domain.Models.Movie();
-            var temp = film.ParseDataModel();
-            film = temp;
-            MessageBox.Show(film.MovieTitle);
+            List<Domain.Models.Movie> filmovi = Domain.Models.Movie.ParseDataModel();
+            MessageBox.Show(filmovi[0].MovieTitle);
         }
     }
 }

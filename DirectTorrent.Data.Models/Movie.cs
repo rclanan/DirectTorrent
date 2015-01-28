@@ -28,7 +28,7 @@ namespace DirectTorrent.Data.Models
         public string ImdbCode { get; set; }
         public string ImdbLink { get; set; }
         public string Size { get; set; }
-        public int SizeByte { get; set; }
+        public long SizeByte { get; set; }
         public float MovieRating { get; set; }
         public string Genre { get; set; }
         public string Uploader { get; set; }
@@ -41,11 +41,9 @@ namespace DirectTorrent.Data.Models
         public string TorrentMagnetUrl { get; set; }
         #endregion
 
-
-        public Movie PopulateModel()
+        public static List<Movie> PopulateModel()
         {
-            YifyWrapper yify = new YifyWrapper();
-            return JsonConvert.DeserializeObject<MovieSet>(yify.Map()).MovieList[0];
+            return JsonConvert.DeserializeObject<MovieSet>(new YifyWrapper().ListAllMovies()).MovieList;
         }
     }
 }

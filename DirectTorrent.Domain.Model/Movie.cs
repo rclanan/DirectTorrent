@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-using DirectTorrent.Data;
 using AutoMapper;
 using System.Net;
 using System.IO;
@@ -30,7 +29,7 @@ namespace DirectTorrent.Domain.Models
         public string ImdbCode { get; set; }
         public Uri ImdbLink { get; set; }
         public string Size { get; set; }
-        public int SizeByte { get; set; }
+        public long SizeByte { get; set; }
         public float MovieRating { get; set; }
         public string Genre { get; set; }
         public string Uploader { get; set; }
@@ -43,24 +42,18 @@ namespace DirectTorrent.Domain.Models
         public string TorrentMagnetUrl { get; set; }
         #endregion
 
-        public Movie()
+        public static List<DirectTorrent.Domain.Models.Movie> ParseDataModel()
         {
-
-        }
-
-        public DirectTorrent.Domain.Models.Movie ParseDataModel()
-        {
-            Data.Models.Movie film = new Data.Models.Movie();
-            var temp = film.PopulateModel();
-            film = temp;
+            List<Data.Models.Movie> filmovi = Data.Models.Movie.PopulateModel();
+            List<Movie> filmoviParsovani = new List<Movie>();
             Mapper.CreateMap<string, int>().ConvertUsing(Convert.ToInt32);
             Mapper.CreateMap<string, DateTime>().ConvertUsing(new DateTimeTypeConverter());
             Mapper.CreateMap<string, Uri>().ConvertUsing(new UriTypeConverter());
             Mapper.CreateMap<string, Image>().ConvertUsing(new ImageTypeConverter());
             Mapper.CreateMap<string, Quality>().ConvertUsing(new QualityTypeConverter());
             Mapper.CreateMap<DirectTorrent.Data.Models.Movie, Movie>();
-            Movie model = Mapper.Map<Movie>(film);
-            return model;
+            filmovi.ForEach(x => filmoviParsovani.Add(Mapper.Map<Movie>(x)));
+            return filmoviParsovani;
         }
 
         #region TypeConverters
@@ -84,11 +77,7 @@ namespace DirectTorrent.Domain.Models
         {
             public Image Convert(ResolutionContext context)
             {
-                Image tmpimg = null;
-                HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create((string)context.SourceValue);
-                HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                Stream stream = httpWebReponse.GetResponseStream();
-                return Image.FromStream(stream);
+                return Image.FromStream(WebRequest.Create((string)context.SourceValue).GetResponse().GetResponseStream());
             }
         }
 
@@ -96,12 +85,15 @@ namespace DirectTorrent.Domain.Models
         {
             public Quality Convert(ResolutionContext context)
             {
-                if (context.SourceValue == "720p")
+                string kvalitet = context.SourceValue.ToString();
+                if (kvalitet == "720p")
                     return Quality.HD;
-                else if (context.SourceValue == "1080p")
+                else if (kvalitet == "1080p")
                     return Quality.FHD;
-                else
+                else if (kvalitet == "3D")
                     return Quality.ThreeD;
+                else
+                    throw new Exception();
             }
         }
         #endregion
