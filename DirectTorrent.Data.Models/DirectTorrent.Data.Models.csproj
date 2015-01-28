@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Movie.cs" />
-    <Compile Include="MovieSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpcomingMovie.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.ApiWrappers.csproj">

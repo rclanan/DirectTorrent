@@ -18,7 +18,7 @@ namespace DirectTorrent.Data.ApiWrappers
         /// <summary>
         /// Provides an interface to the /api/list yify API.
         /// </summary>
-        /// <param name="format">Sets the format in which to display the results in.</param>
+        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
         /// <param name="limit">Sets the max amount of movie results (1-50, inclusive).</param>
         /// <param name="set">Sets the set of movies to display (eg limit=15 and set=2 will show you movies 15-30).</param>
         /// <param name="quality">Sets a quality type to filter by.</param>
@@ -33,47 +33,89 @@ namespace DirectTorrent.Data.ApiWrappers
         {
             if (limit > 50 || limit < 1) throw new ArgumentOutOfRangeException("limit", limit, "Must be between 1 - 50 (inclusive).");
             if (rating > 9) throw new ArgumentOutOfRangeException("rating", rating, "Must be between 0 - 9 (inclusive).");
-            string qual = null;
-            string form = null;
-            switch (quality)
-            {
-                case Quality.HD:
-                    qual = "3D";
-                    break;
-                case Quality.FHD:
-                    qual = "1080p";
-                    break;
-                case Quality.ThreeD:
-                    qual = "3D";
-                    break;
-                case Quality.ALL:
-                    qual = "ALL";
-                    break;
-            }
-            switch (format)
-            {
-                case Format.JSON:
-                    form = "json";
-                    break;
-                case Format.JSONP:
-                    form = "jsonp";
-                    break;
-                case Format.XML:
-                    form = "xml";
-                    break;
-
-            }
-            string apiReq = string.Format("limit={0}&set={1}&quality={2}&rating={3}&keywords={4}&genre={5}&sort={6}&order={7}", limit, set, qual, rating, keywords, genre, sort.ToString().ToLower(), order.ToString().ToLower().Substring(0, 3));
-            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/list.{0}?{1}", form, apiReq)).GetResponse().GetResponseStream()))
+            string apiReq = string.Format("limit={0}&set={1}&quality={2}&rating={3}&keywords={4}&genre={5}&sort={6}&order={7}", limit, set, ParseQuality(quality), rating, keywords, genre, sort.ToString().ToLower(), order.ToString().ToLower().Substring(0, 3));
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/list.{0}?{1}", ParseFormat(format), apiReq)).GetResponse().GetResponseStream()))
             {
                 return sr.ReadToEnd();
             }
         }
 
-
-        public string ListMoviesByImdb(params int[] imdb_ids)
+        /// <summary>
+        /// Provides an interface to the /api/listimdb yify API.
+        /// </summary>
+        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
+        /// <param name="imdbIds">Sets the IMDB ID(s)s of the movis(s) that are/is to be retreived.</param>
+        /// <returns>A string representing the JSON response by the Yify API (the query result).</returns>
+        public string ListMoviesByImdb(Format format = Format.JSON, params int[] imdbIds)
         {
-            throw new NotImplementedException();
+            if (imdbIds.Length > 50) throw new ArgumentOutOfRangeException("imdbIds", imdbIds, "Must be less than 50.");
+            StringBuilder apiReq = new StringBuilder();
+            foreach (var imdbId in imdbIds)
+            {
+                apiReq.AppendFormat("imdb_id[]=tt{0}&", imdbId.ToString("D7"));
+            }
+            apiReq.Remove(apiReq.Length - 1, 1);
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/listimdb.{0}?{1}", ParseFormat(format), apiReq)).GetResponse().GetResponseStream()))
+            {
+                return sr.ReadToEnd();
+            }
+        }
+
+        /// <summary>
+        /// Provides an interface to the /api/upcoming yify API.
+        /// </summary>
+        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
+        /// <returns>A string representing the JSON response by the Yify API (upcoming movie releases).</returns>
+        public string UpcomingMovies(Format format = Format.JSON)
+        {
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/upcoming.{0}", ParseFormat(format))).GetResponse().GetResponseStream()))
+            {
+                return sr.ReadToEnd();
+            }
+        }
+
+        /// <summary>
+        /// Provides an interface to the /api/movie yify API.
+        /// </summary>
+        /// <param name="movieId">Sets the id of the movie details which are to be queried.</param>
+        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
+        /// <returns>A string representing the JSON response by the Yify API (queried movie details).</returns>
+        public string MovieDetails(int movieId, Format format = Format.JSON)
+        {
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/movie.{0}?id=", ParseFormat(format), movieId)).GetResponse().GetResponseStream()))
+            {
+                return sr.ReadToEnd();
+            }
+        }
+
+        private string ParseFormat(Format format)
+        {
+            switch (format)
+            {
+                case Format.JSON:
+                    return "json";
+                case Format.JSONP:
+                    return "jsonp";
+                case Format.XML:
+                    return "xml";
+            }
+            throw new ArgumentOutOfRangeException("format");
+        }
+
+        private string ParseQuality(Quality quality)
+        {
+            switch (quality)
+            {
+                case Quality.HD:
+                    return "3D";
+                case Quality.FHD:
+                    return "1080p";
+                case Quality.ThreeD:
+                    return "3D";
+                case Quality.ALL:
+                    return "ALL";
+            }
+            throw new ArgumentOutOfRangeException("quality");
         }
     }
 }

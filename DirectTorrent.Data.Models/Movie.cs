@@ -44,7 +44,14 @@ namespace DirectTorrent.Data.Models
         public static List<Movie> PopulateModel()
         {
             string a = new YifyWrapper().ListMovies(order: YifyWrapper.Order.Ascending, limit: 20);
-            return JsonConvert.DeserializeObject<MovieSet>(new YifyWrapper().ListAllMovies()).MovieList;
+            string b = new YifyWrapper().ListMoviesByImdb(imdbIds: 0098502);
+            return null;
         }
+    }
+
+    public class MovieSet
+    {
+        public int MovieCount { get; set; }
+        public List<Movie> MovieList { get; set; }
     }
 }
