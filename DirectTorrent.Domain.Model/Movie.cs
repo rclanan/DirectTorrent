@@ -29,7 +29,7 @@ namespace DirectTorrent.Domain.Models
         public string ImdbCode { get; set; }
         public Uri ImdbLink { get; set; }
         public string Size { get; set; }
-        public long SizeByte { get; set; }
+        public uint SizeByte { get; set; }
         public float MovieRating { get; set; }
         public string Genre { get; set; }
         public string Uploader { get; set; }

@@ -28,7 +28,7 @@ namespace DirectTorrent.Data.Models
         public string ImdbCode { get; set; }
         public string ImdbLink { get; set; }
         public string Size { get; set; }
-        public long SizeByte { get; set; }
+        public uint SizeByte { get; set; }
         public float MovieRating { get; set; }
         public string Genre { get; set; }
         public string Uploader { get; set; }
@@ -43,6 +43,7 @@ namespace DirectTorrent.Data.Models
 
         public static List<Movie> PopulateModel()
         {
+            string a = new YifyWrapper().ListMovies(order: YifyWrapper.Order.Ascending, limit: 20);
             return JsonConvert.DeserializeObject<MovieSet>(new YifyWrapper().ListAllMovies()).MovieList;
         }
     }
