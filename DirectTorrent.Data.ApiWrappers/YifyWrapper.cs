@@ -10,10 +10,66 @@ namespace DirectTorrent.Data.ApiWrappers
 {
     public class YifyWrapper
     {
+        #region Enums
+        // Enums for enforcing the value range of some api parameters
         public enum Format { JSON, JSONP, XML }
         public enum Quality { HD, FHD, ThreeD, ALL }
         public enum Sort { Date, Seeds, Peers, Size, Alphabet, Rating, Downloaded, Year }
         public enum Order { Ascending, Descending }
+        #endregion
+
+        #region Enum Parsers
+        // Parses the Format enum, for creating the api request string
+        private string ParseFormat(Format format)
+        {
+            switch (format)
+            {
+                case Format.JSON:
+                    return "json";
+                case Format.JSONP:
+                    return "jsonp";
+                case Format.XML:
+                    return "xml";
+            }
+            throw new ArgumentOutOfRangeException("format");
+        }
+
+        // Parses the Quality enum, for creating the api request string
+        private string ParseQuality(Quality quality)
+        {
+            switch (quality)
+            {
+                case Quality.HD:
+                    return "3D";
+                case Quality.FHD:
+                    return "1080p";
+                case Quality.ThreeD:
+                    return "3D";
+                case Quality.ALL:
+                    return "ALL";
+            }
+            throw new ArgumentOutOfRangeException("quality");
+        }
+        #endregion
+
+        #region API Methods
+        /// <summary>
+        /// Provides an interface to the /api/upcoming yify API.
+        /// </summary>
+        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
+        /// <returns>A string representing the JSON response by the Yify API (upcoming movie releases).</returns>
+        public string UpcomingMovies(Format format = Format.JSON)
+        {
+            // Getting the response
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/upcoming.{0}", ParseFormat(format))).GetResponse().GetResponseStream()))
+            {
+                // Checking if the request hasn't failed
+                string response = sr.ReadToEnd();
+                if (!response.Contains("No upcoming movies"))
+                    return response;
+                throw new Exception("No upcoming movies.");
+            }
+        }
 
         /// <summary>
         /// Provides an interface to the /api/list yify API.
@@ -31,12 +87,19 @@ namespace DirectTorrent.Data.ApiWrappers
         /// <returns>A string representing the JSON response by the Yify API (the query result).</returns>
         public string ListMovies(Format format = Format.JSON, byte limit = 20, byte set = 1, Quality quality = Quality.ALL, byte rating = 0, string keywords = "", string genre = "ALL", Sort sort = Sort.Date, Order order = Order.Descending)
         {
+            // Parameter value range checking
             if (limit > 50 || limit < 1) throw new ArgumentOutOfRangeException("limit", limit, "Must be between 1 - 50 (inclusive).");
             if (rating > 9) throw new ArgumentOutOfRangeException("rating", rating, "Must be between 0 - 9 (inclusive).");
+            // Forming the request string
             string apiReq = string.Format("limit={0}&set={1}&quality={2}&rating={3}&keywords={4}&genre={5}&sort={6}&order={7}", limit, set, ParseQuality(quality), rating, keywords, genre, sort.ToString().ToLower(), order.ToString().ToLower().Substring(0, 3));
+            // Getting the response
             using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/list.{0}?{1}", ParseFormat(format), apiReq)).GetResponse().GetResponseStream()))
             {
-                return sr.ReadToEnd();
+                // Checking if the request hasn't failed
+                string response = sr.ReadToEnd();
+                if (!response.Contains("No movies found"))
+                    return response;
+                throw new Exception("No movies found.");
             }
         }
 
@@ -48,29 +111,25 @@ namespace DirectTorrent.Data.ApiWrappers
         /// <returns>A string representing the JSON response by the Yify API (the query result).</returns>
         public string ListMoviesByImdb(Format format = Format.JSON, params int[] imdbIds)
         {
+            // Parameter value checking
             if (imdbIds.Length > 50) throw new ArgumentOutOfRangeException("imdbIds", imdbIds, "Must be less than 50.");
+            // Building the api request string
             StringBuilder apiReq = new StringBuilder();
             foreach (var imdbId in imdbIds)
             {
+                // Imdb code is in 7 digit format, adding the padding (lead zeros)
                 apiReq.AppendFormat("imdb_id[]=tt{0}&", imdbId.ToString("D7"));
             }
+            // Removing the last "&"
             apiReq.Remove(apiReq.Length - 1, 1);
+            // Getting the response
             using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/listimdb.{0}?{1}", ParseFormat(format), apiReq)).GetResponse().GetResponseStream()))
             {
-                return sr.ReadToEnd();
-            }
-        }
-
-        /// <summary>
-        /// Provides an interface to the /api/upcoming yify API.
-        /// </summary>
-        /// <param name="format">Sets the format in which to display the results in. DO NOT USE ANYTHING OTHER THAN JSON! (Experimental)</param>
-        /// <returns>A string representing the JSON response by the Yify API (upcoming movie releases).</returns>
-        public string UpcomingMovies(Format format = Format.JSON)
-        {
-            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/upcoming.{0}", ParseFormat(format))).GetResponse().GetResponseStream()))
-            {
-                return sr.ReadToEnd();
+                // Checking if the request hasn't failed
+                string response = sr.ReadToEnd();
+                if (!response.Contains("No movies found"))
+                    return response;
+                throw new Exception("No movies found.");
             }
         }
 
@@ -82,40 +141,16 @@ namespace DirectTorrent.Data.ApiWrappers
         /// <returns>A string representing the JSON response by the Yify API (queried movie details).</returns>
         public string MovieDetails(int movieId, Format format = Format.JSON)
         {
-            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/movie.{0}?id=", ParseFormat(format), movieId)).GetResponse().GetResponseStream()))
+            // Getting the response
+            using (StreamReader sr = new StreamReader(WebRequest.Create(string.Format("https://yts.re/api/movie.{0}?id={1}", ParseFormat(format), movieId)).GetResponse().GetResponseStream()))
             {
-                return sr.ReadToEnd();
+                // Checking if the request hasn't failed
+                string response = sr.ReadToEnd();
+                if (!response.Contains("No movies found"))
+                    return response;
+                throw new Exception("No movies found.");
             }
         }
-
-        private string ParseFormat(Format format)
-        {
-            switch (format)
-            {
-                case Format.JSON:
-                    return "json";
-                case Format.JSONP:
-                    return "jsonp";
-                case Format.XML:
-                    return "xml";
-            }
-            throw new ArgumentOutOfRangeException("format");
-        }
-
-        private string ParseQuality(Quality quality)
-        {
-            switch (quality)
-            {
-                case Quality.HD:
-                    return "3D";
-                case Quality.FHD:
-                    return "1080p";
-                case Quality.ThreeD:
-                    return "3D";
-                case Quality.ALL:
-                    return "ALL";
-            }
-            throw new ArgumentOutOfRangeException("quality");
-        }
+        #endregion
     }
 }
