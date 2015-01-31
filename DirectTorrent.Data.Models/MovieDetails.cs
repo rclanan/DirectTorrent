@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using DirectTorrent.Data.ApiWrappers;
+using Newtonsoft.Json;
+
 namespace DirectTorrent.Data.Models
 {
     public class CastList
@@ -22,6 +25,7 @@ namespace DirectTorrent.Data.Models
 
     public class MovieDetails
     {
+        #region Properties
         public string MovieID { get; set; }
         public string MovieUrl { get; set; }
         public string DateUploaded { get; set; }
@@ -66,5 +70,12 @@ namespace DirectTorrent.Data.Models
         public string TorrentPeers { get; set; }
         public string Size { get; set; }
         public string SizeByte { get; set; }
+        #endregion
+
+        public MovieDetails(int movId)
+        {
+            var temp = JsonConvert.DeserializeObject<MovieDetails>(YifyWrapper.GetMovieDetails(movId));
+            //TODO: Copy Constructor ._.        
+        }
     }
 }

@@ -50,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.ApiWrappers.csproj">
+      <Project>{8ccf7c6e-42cb-4646-a22b-0c5e42d11e17}</Project>
+      <Name>DirectTorrent.Data.ApiWrappers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DirectTorrent.Data.Models\DirectTorrent.Data.Models.csproj">
       <Project>{ece0509f-b1fb-4d99-afb4-58361d5e324a}</Project>
       <Name>DirectTorrent.Data.Models</Name>
