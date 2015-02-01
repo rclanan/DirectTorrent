@@ -27,6 +27,7 @@ namespace DirectTorrent.WPFClient
         {
             List<Domain.Models.Movie> filmovi = Domain.Models.Movie.ParseDataModel();
             MessageBox.Show(filmovi[0].MovieTitle);
+            MessageBox.Show(filmovi[1].Quality.ToString());
         }
     }
 }
