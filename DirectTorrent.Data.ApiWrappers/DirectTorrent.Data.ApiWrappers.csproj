@@ -44,12 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YifyWrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="movies.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <Compile Include="Yify\ApiData.cs" />
+    <Compile Include="Yify\ApiResponse.cs" />
+    <Compile Include="Yify\ApiWrapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

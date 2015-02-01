@@ -70,7 +70,10 @@ namespace DirectTorrent.Domain.Models
             //filmovi.ForEach(x => filmoviParsovani.Add(Mapper.Map<Movie>(x)));
             //return filmoviParsovani;
             Stopwatch timer = Stopwatch.StartNew();
-            Data.Models.MovieSet filmovi = new Data.Models.MovieSet(limit: 5);
+            Data.Models.MovieSet filmovi = new Data.Models.MovieSet();
+            Debug.WriteLine(filmovi.MovieList.Count);
+            Debug.WriteLine("Getting data: " + timer.Elapsed); // 14.4574611sec data, varies
+            timer.Restart();
             List<Movie> filmoviParsirani = new List<Movie>();
             Mapper.CreateMap<string, int>().ConvertUsing(Convert.ToInt32);
             Mapper.CreateMap<string, DateTime>().ConvertUsing(new DateTimeTypeConverter());
@@ -78,11 +81,14 @@ namespace DirectTorrent.Domain.Models
             Mapper.CreateMap<string, Image>().ConvertUsing(new ImageTypeConverter());
             Mapper.CreateMap<string, Quality>().ConvertUsing(new QualityTypeConverter());
             Mapper.CreateMap<DirectTorrent.Data.Models.Movie, Domain.Models.Movie>();
+            Debug.WriteLine("Creating maps: " + timer.Elapsed); //0.2096523sec maps / 0 sec maps : 5
+            timer.Restart();
             filmovi.MovieList.ForEach(x => filmoviParsirani.Add(Mapper.Map<Movie>(x)));
-
+            Debug.WriteLine("Mapping: " + timer.Elapsed); //4.3143437sec mapping / 1sec mapping : 5
             timer.Stop();
-            // TODO: 24 FUCKING SECONDS!!! GOTTTA SPEED THIS SHIT UP
-            Debug.WriteLine(timer.Elapsed);
+
+
+
             return filmoviParsirani;
         }
 
