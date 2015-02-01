@@ -23,7 +23,7 @@ namespace DirectTorrent.Logic.Models
             public int Seeds { get; private set; }
             public int Peers { get; private set; }
             public string Size { get; private set; }
-            public int SizeBytes { get; private set; }
+            public long SizeBytes { get; private set; }
             public DateTime DateUploaded { get; private set; }
             public int DateUploadedUnix { get; private set; }
         }

@@ -13,6 +13,11 @@ namespace DirectTorrent.Data.Yify.Models
     }
 
     #region Enums
+    // Enums enforcing the parameter value ranges.
+
+    /// <summary>
+    /// Represents the format of the response.
+    /// </summary>
     public enum Format
     {
         JSON,
@@ -20,6 +25,10 @@ namespace DirectTorrent.Data.Yify.Models
         XML
     }
 
+
+    /// <summary>
+    /// Represents the quality of the video.
+    /// </summary>
     public enum Quality
     {
         HD,
@@ -28,6 +37,9 @@ namespace DirectTorrent.Data.Yify.Models
         ALL
     }
 
+    /// <summary>
+    /// Represents the sorting criteria by which the results will be sorted.
+    /// </summary>
     public enum Sort
     {
         Title,
@@ -40,6 +52,9 @@ namespace DirectTorrent.Data.Yify.Models
         DateAdded
     }
 
+    /// <summary>
+    /// Represents the order in which the results will be sorted.
+    /// </summary>
     public enum Order
     {
         Ascending,
@@ -47,17 +62,47 @@ namespace DirectTorrent.Data.Yify.Models
     }
     #endregion
 
+    /// <summary>
+    /// Represents the data associated to a torrent.
+    /// </summary>
     public class Torrent : ICloneable
     {
 
+        /// <summary>
+        /// Gets the url of the torrent.
+        /// </summary>
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Gets the hash of the torrent.
+        /// </summary>
         public string Hash { get; private set; }
+        /// <summary>
+        /// Gets the quality of the movie torrent.
+        /// </summary>
         public Quality Quality { get; private set; }
+        /// <summary>
+        /// Gets the amount of seeds.
+        /// </summary>
         public int Seeds { get; private set; }
+        /// <summary>
+        /// Gets the amount of peers.
+        /// </summary>
         public int Peers { get; private set; }
+        /// <summary>
+        /// Gets the size of the movie.
+        /// </summary>
         public string Size { get; private set; }
+        /// <summary>
+        /// Gets the size of the movie represented in bytes.
+        /// </summary>
         public long SizeBytes { get; private set; }
+        /// <summary>
+        /// Gets the date when the torrent was uploaded.
+        /// </summary>
         public DateTime DateUploaded { get; private set; }
+        /// <summary>
+        /// Gets the date when the torrent was uploaded as a unix timestamp.
+        /// </summary>
         public int DateUploadedUnix { get; private set; }
 
         [JsonConstructor]
@@ -75,6 +120,7 @@ namespace DirectTorrent.Data.Yify.Models
             this.DateUploadedUnix = date_uploaded_unix;
         }
 
+        // Parser method for the quality enum.
         private Quality ParseQuality(string qual)
         {
             switch (qual)
@@ -98,25 +144,72 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the data associated to the movie.
+    /// </summary>
     public class Movie : ICloneable
     {
-
+        /// <summary>
+        /// Gets the ID of the movie.
+        /// </summary>
         public int Id { get; private set; }
+        /// <summary>
+        /// Gets the url of the movie.
+        /// </summary>
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Gets the imdb code of the movie.
+        /// </summary>
         public string ImdbCode { get; private set; }
+        /// <summary>
+        /// Gets the title of movie.
+        /// </summary>
         public string Title { get; private set; }
+        /// <summary>
+        /// Gets the long title of the movie.
+        /// </summary>
         public string TitleLong { get; private set; }
+        /// <summary>
+        /// Gets the release year of the movie.
+        /// </summary>
         public int Year { get; private set; }
+        /// <summary>
+        /// Gets the movie rating.
+        /// </summary>
         public double Rating { get; private set; }
+        /// <summary>
+        /// Gets the movie runtime.
+        /// </summary>
         public int Runtime { get; private set; }
+        /// <summary>
+        /// Gets the list of genres to which the movie belongs.
+        /// </summary>
         public List<string> Genres { get; private set; }
+        /// <summary>
+        /// Gets the language of the movie.
+        /// </summary>
         public string Language { get; private set; }
+        /// <summary>
+        /// Gets the mpa rating of the movie.
+        /// </summary>
         public string MpaRating { get; private set; }
         public string SmallCoverImage { get; private set; }
         public string MediumCoverImage { get; private set; }
+        /// <summary>
+        /// Gets the current movie state.
+        /// </summary>
         public string State { get; private set; }
+        /// <summary>
+        /// Gets the list of torrents associated to the movie.
+        /// </summary>
         public List<Torrent> Torrents { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was uploaded.
+        /// </summary>
         public DateTime DateUploaded { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was uploaded as a unix timestamp.
+        /// </summary>
         public int DateUploadedUnix { get; private set; }
 
         [JsonConstructor]
@@ -156,11 +249,26 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the data returned by the list_movies API
+    /// </summary>
     public class ListMoviesData : IDataModel
     {
+        /// <summary>
+        /// Gets the total number of movies.
+        /// </summary>
         public int MovieCount { get; private set; }
+        /// <summary>
+        /// Gets the amount of movies limited by the query.
+        /// </summary>
         public int Limit { get; private set; }
+        /// <summary>
+        /// Gets the page of movies queried.
+        /// </summary>
         public int PageNumber { get; private set; }
+        /// <summary>
+        /// Gets the movies returned by the query.
+        /// </summary>
         public List<Movie> Movies { get; private set; }
 
         [JsonConstructor]
@@ -179,8 +287,14 @@ namespace DirectTorrent.Data.Yify.Models
         //._. TODO: When there's data to model
     }
 
+    /// <summary>
+    /// Represents the data associated to the director.
+    /// </summary>
     public class Director : ICloneable
     {
+        /// <summary>
+        /// Gets the director's name.
+        /// </summary>
         public string Name { get; private set; }
         public string SmallImage { get; private set; }
         public string MediumImage { get; private set; }
@@ -200,9 +314,18 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the the data associated to the actor.
+    /// </summary>
     public class Actor : ICloneable
     {
+        /// <summary>
+        /// Gets the actor's name.
+        /// </summary>
         public string Name { get; private set; }
+        /// <summary>
+        /// Gets the actor's character name.
+        /// </summary>
         public string CharacterName { get; private set; }
         public string SmallImage { get; private set; }
         public string MediumImage { get; private set; }
@@ -223,6 +346,9 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the set of images associated to the movie.
+    /// </summary>
     public class Images
     {
         public string BackgroundImage { get; private set; }
@@ -256,33 +382,114 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the data returned by the movie_details API
+    /// </summary>
     public class MovieDetailsData : IDataModel
     {
+        /// <summary>
+        /// Gets the ID of the movie.
+        /// </summary>
         public int Id { get; private set; }
+        /// <summary>
+        /// Gets the url of the movie.
+        /// </summary>
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Gets the imdb code of the movie.
+        /// </summary>
         public string ImdbCode { get; private set; }
+        /// <summary>
+        /// Gets the title of the movie.
+        /// </summary>
         public string Title { get; private set; }
+        /// <summary>
+        /// Gets the long title of the movie.
+        /// </summary>
         public string TitleLong { get; private set; }
+        /// <summary>
+        /// Gets the year in which the movie was released.
+        /// </summary>
         public int Year { get; private set; }
+        /// <summary>
+        /// Gets the rating of the movie.
+        /// </summary>
         public double Rating { get; private set; }
+        /// <summary>
+        /// Gets the runtime of the movie.
+        /// </summary>
         public int Runtime { get; private set; }
+        /// <summary>
+        /// Gets the genres to which the movie belongs.
+        /// </summary>
         public List<string> Genres { get; private set; }
+        /// <summary>
+        /// Gets the language of the movie.
+        /// </summary>
         public string Language { get; private set; }
+        /// <summary>
+        /// Gets the mpa rating of the movie.
+        /// </summary>
         public string MpaRating { get; private set; }
+        /// <summary>
+        /// Gets the download count of the movie.
+        /// </summary>
         public int DownloadCount { get; private set; }
+        /// <summary>
+        /// Gets the like count of the movie.
+        /// </summary>
         public int LikeCount { get; private set; }
+        /// <summary>
+        /// Gets the RottenTomatoes critics score.
+        /// </summary>
         public int RtCriticsScore { get; private set; }
+        /// <summary>
+        /// Gets the RottenTomatoes critics rating.
+        /// </summary>
         public string RtCriticsRating { get; private set; }
+        /// <summary>
+        /// Gets the RottenTomatoes audience score.
+        /// </summary>
         public int RtAudienceScore { get; private set; }
+        /// <summary>
+        /// Gets the RottenTomatoes audience rating.
+        /// </summary>
         public string RtAudienceRating { get; private set; }
+        /// <summary>
+        /// Gets the abstract of the description.
+        /// </summary>
         public string DescriptionIntro { get; private set; }
+        /// <summary>
+        /// Gets the full description of the movie.
+        /// </summary>
         public string DescriptionFull { get; private set; }
+        /// <summary>
+        /// Gets the YouTube trailer code of the movie.
+        /// </summary>
         public string YtTrailerCode { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was uploaded.
+        /// </summary>
         public DateTime DateUploaded { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was uploaded as a unix timestamp.
+        /// </summary>
         public int DateUploadedUnix { get; private set; }
+        /// <summary>
+        /// Gets the set of images associated to the movie.
+        /// </summary>
         public Images Images { get; private set; }
+        /// <summary>
+        /// Gets the list of torrents associated to the movie.
+        /// </summary>
         public List<Torrent> Torrents { get; private set; }
+        /// <summary>
+        /// Gets the list of directors associated to the movie.
+        /// </summary>
         public List<Director> Directors { get; private set; }
+        /// <summary>
+        /// Gets the list of actors associated to the movie.
+        /// </summary>
         public List<Actor> Actors { get; private set; }
 
         [JsonConstructor]

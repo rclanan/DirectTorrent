@@ -11,9 +11,11 @@ using DirectTorrent.Data.Yify.Models;
 
 namespace DirectTorrent.Data.Yify.ApiWrapper
 {
+    /// <summary>
+    /// Represents a wrapper around the Yify /api/v2 APIs.
+    /// </summary>
     public static class ApiWrapper
     {
-
         #region Enum Parsers
 
         // Parsers for parameter value enforcing enums

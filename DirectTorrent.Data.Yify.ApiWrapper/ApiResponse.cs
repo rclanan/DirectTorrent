@@ -9,6 +9,9 @@ using DirectTorrent.Data.Yify.Models;
 
 namespace DirectTorrent.Data.Yify.ApiWrapper
 {
+    /// <summary>
+    /// Represents the metadata associated to the API response.
+    /// </summary>
     public class Meta
     {
         [JsonConstructor]
@@ -20,9 +23,21 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
             this.ExecutionTime = execution_time;
         }
 
+        /// <summary>
+        /// Gets the server time at the time of execution.
+        /// </summary>
         public int ServerTime { get; private set; }
+        /// <summary>
+        /// Gets the server timezone.
+        /// </summary>
         public string ServerTimezone { get; private set; }
+        /// <summary>
+        /// Gets the API version at the time of execution.
+        /// </summary>
         public int ApiVersion { get; private set; }
+        /// <summary>
+        /// Gets the measured execution time.
+        /// </summary>
         public string ExecutionTime { get; private set; }
     }
 
@@ -38,12 +53,27 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
         internal Meta MetaData { get; set; }
     }
 
+    /// <summary>
+    /// Represents the API response.
+    /// </summary>
+    /// <typeparam name="T">The type of data that's going to be contained in the response.</typeparam>
     public class ApiResponse<T> where T : IDataModel
     {
-
+        /// <summary>
+        /// Gets the API response status.
+        /// </summary>
         public string Status { get; private set; }
+        /// <summary>
+        /// Gets the API response status message.
+        /// </summary>
         public string StatusMessage { get; private set; }
+        /// <summary>
+        /// Gets the API response data.
+        /// </summary>
         public T Data { get; private set; }
+        /// <summary>
+        /// Gets the API response metadata.
+        /// </summary>
         public Meta MetaData { get; private set; }
 
         internal ApiResponse(ApiResponseRaw rawResponse)
