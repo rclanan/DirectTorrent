@@ -5,6 +5,7 @@ using System.Text;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using DirectTorrent.Data.ApiWrappers.Yify.ApiData;
 
 namespace DirectTorrent.Data.ApiWrappers.Yify
 {
@@ -41,7 +42,7 @@ namespace DirectTorrent.Data.ApiWrappers.Yify
         internal Meta MetaData { get; set; }
     }
 
-    public class ApiResponse<T> where T : IApiDataModel
+    public class ApiResponse<T> where T : IDataModel
     {
         internal ApiResponse(ApiResponseRaw rawResponse)
         {

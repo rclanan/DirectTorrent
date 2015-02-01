@@ -9,19 +9,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1C94DE42-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5F000477-FF77-45EB-A750-C4CE237E6AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.WPFClient", "DirectTorrent.WPFClient\DirectTorrent.WPFClient.csproj", "{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38F84A3E-8A29-47AD-8865-B19D2B4B2EA6}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Domain.Models", "DirectTorrent.Domain.Model\DirectTorrent.Domain.Models.csproj", "{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8}"
-EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "DirectTorrent.Modeling", "DirectTorrent.Modeling\DirectTorrent.Modeling.modelproj", "{BC4CD032-D61C-4738-B4BB-066F9A1D6014}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.ApiWrappers", "DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.ApiWrappers.csproj", "{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.Services", "DirectTorrent.Logic.Services\DirectTorrent.Logic.Services.csproj", "{C0739FBC-758B-4A58-8D95-60E002DAFD0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.DTO", "DirectTorrent.Logic.DTO\DirectTorrent.Logic.DTO.csproj", "{27727704-EA27-496F-BBB9-7B1878AA4C05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC4CD032-D61C-4738-B4BB-066F9A1D6014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BC4CD032-D61C-4738-B4BB-066F9A1D6014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4CD032-D61C-4738-B4BB-066F9A1D6014}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,13 +37,21 @@ Global
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{03EE8C5D-B32A-47B6-AC85-5990D8CDB18B} = {5F000477-FF77-45EB-A750-C4CE237E6AEC}
-		{34B70B88-1F9A-43E0-BB7A-7DFD1C0F4BF8} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17} = {1C94DE42-5314-4878-BEA4-4E155AC0497E}
+		{C0739FBC-758B-4A58-8D95-60E002DAFD0C} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
+		{27727704-EA27-496F-BBB9-7B1878AA4C05} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
 	EndGlobalSection
 EndGlobal

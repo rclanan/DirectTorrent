@@ -3,11 +3,12 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Newtonsoft.Json;
 
-namespace DirectTorrent.Data.ApiWrappers.Yify
+namespace DirectTorrent.Data.ApiWrappers.Yify.ApiData
 {
-    public interface IApiDataModel
+    public interface IDataModel
     {
     }
 
@@ -120,7 +121,7 @@ namespace DirectTorrent.Data.ApiWrappers.Yify
         }
     }
 
-    public class ListMoviesData : IApiDataModel
+    public class ListMoviesData : IDataModel
     {
         public int MovieCount { get; private set; }
         public int Limit { get; private set; }
@@ -138,7 +139,7 @@ namespace DirectTorrent.Data.ApiWrappers.Yify
         }
     }
 
-    public class UpcomingMoviesData : IApiDataModel
+    public class UpcomingMoviesData : IDataModel
     {
         //._. TODO: When there's data to model
     }
@@ -220,7 +221,7 @@ namespace DirectTorrent.Data.ApiWrappers.Yify
         }
     }
 
-    public class MovieDetailsData : IApiDataModel
+    public class MovieDetailsData : IDataModel
     {
         public int Id { get; private set; }
         public Uri Url { get; private set; }

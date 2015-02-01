@@ -5,7 +5,9 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Net.Sockets;
+
 using Newtonsoft.Json;
+using DirectTorrent.Data.ApiWrappers.Yify.ApiData;
 
 namespace DirectTorrent.Data.ApiWrappers.Yify
 {

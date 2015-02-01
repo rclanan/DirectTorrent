@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DirectTorrent.Domain.Models")]
+[assembly: AssemblyTitle("DirectTorrent.Logic.DTO")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DirectTorrent.Domain.Models")]
+[assembly: AssemblyProduct("DirectTorrent.Logic.DTO")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1ec81305-30df-4da0-bfa8-d13f14ad5535")]
+[assembly: Guid("1b1b9d2b-a473-40a0-935b-1a2fce7bdb17")]
 
 // Version information for an assembly consists of the following four values:
 //
