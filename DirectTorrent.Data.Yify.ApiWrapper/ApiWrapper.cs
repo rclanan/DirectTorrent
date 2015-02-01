@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using Newtonsoft.Json;
 using DirectTorrent.Data.Yify.Models;
 
-namespace DirectTorrent.Data.Yify.ApiWrappers
+namespace DirectTorrent.Data.Yify.ApiWrapper
 {
     public static class ApiWrapper
     {

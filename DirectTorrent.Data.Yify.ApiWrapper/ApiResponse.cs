@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using DirectTorrent.Data.Yify.Models;
 
-namespace DirectTorrent.Data.Yify.ApiWrappers
+namespace DirectTorrent.Data.Yify.ApiWrapper
 {
     public class Meta
     {
@@ -20,13 +20,9 @@ namespace DirectTorrent.Data.Yify.ApiWrappers
             this.ExecutionTime = execution_time;
         }
 
-        //[JsonProperty(PropertyName = "server_time")]
         public int ServerTime { get; private set; }
-        //[JsonProperty(PropertyName = "server_timezone")]
         public string ServerTimezone { get; private set; }
-        //[JsonProperty(PropertyName = "api_version")]
         public int ApiVersion { get; private set; }
-        //[JsonProperty(PropertyName = "execution_time")]
         public string ExecutionTime { get; private set; }
     }
 
@@ -44,6 +40,12 @@ namespace DirectTorrent.Data.Yify.ApiWrappers
 
     public class ApiResponse<T> where T : IDataModel
     {
+
+        public string Status { get; private set; }
+        public string StatusMessage { get; private set; }
+        public T Data { get; private set; }
+        public Meta MetaData { get; private set; }
+
         internal ApiResponse(ApiResponseRaw rawResponse)
         {
             this.Status = rawResponse.Status;
@@ -51,10 +53,5 @@ namespace DirectTorrent.Data.Yify.ApiWrappers
             this.MetaData = rawResponse.MetaData;
             this.Data = rawResponse.Data.ToObject<T>();
         }
-
-        public string Status { get; private set; }
-        public string StatusMessage { get; private set; }
-        public T Data { get; private set; }
-        public Meta MetaData { get; private set; }
     }
 }

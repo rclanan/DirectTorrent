@@ -7,8 +7,8 @@
     <ProjectGuid>{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectTorrent.Data.Yify.ApiWrappers</RootNamespace>
-    <AssemblyName>DirectTorrent.Data.Yify.ApiWrappers</AssemblyName>
+    <RootNamespace>DirectTorrent.Data.Yify.ApiWrapper</RootNamespace>
+    <AssemblyName>DirectTorrent.Data.Yify.ApiWrapper</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -48,7 +48,7 @@
     <Compile Include="ApiWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DirectTorrent.Data.Models\DirectTorrent.Data.Yify.Models.csproj">
+    <ProjectReference Include="..\DirectTorrent.Data.Yify.Models\DirectTorrent.Data.Yify.Models.csproj">
       <Project>{cf058cc9-4a20-4cbc-a25f-48b01e79d828}</Project>
       <Name>DirectTorrent.Data.Yify.Models</Name>
     </ProjectReference>

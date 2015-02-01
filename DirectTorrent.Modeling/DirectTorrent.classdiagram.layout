@@ -1,19 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.875" name="DirectTorrent">
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DirectTorrent">
   <logicalClassDesignerModelMoniker Id="b4cdbc5d-7190-4da1-ad37-340e4c8b4c47" />
   <nestedChildShapes>
-    <classShape Id="938e30aa-46c7-4d48-949c-9b365b2b03d6" absoluteBounds="0.625, 0.75, 2.5, 5.0315855002403245" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
-      <classMoniker Id="83b95b87-1ba7-496b-bad0-7ea0e9d9d8d8" LastKnownName="Movie" />
+    <classShape Id="dd3378dd-caca-41ca-b152-80b41da951a9" absoluteBounds="4.75, 1.75, 1.5, 5.3518979903062167" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
+      <classMoniker Id="4f8ad9ad-edfb-4690-a08a-e6004156d607" LastKnownName="Movie" />
       <nestedChildShapes>
-        <AttributeElementListCompartment Id="c18cc8a7-63fa-4f63-8c95-497c8831ca82" absoluteBounds="0.64, 1.2653356393178306, 2.4699999999999998, 4.2050779933730755" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="ff95897d-0fbe-4c8c-a689-3c62475d8a62" isExpanded="false" absoluteBounds="0.64, 5.4804136326909054, 2.4699999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="fc090a0d-28cd-457e-aa57-5229e063fbc5" absoluteBounds="4, 0.5, 3.375, 8.0745541558663039" hideQualifiedName="false" increaseHeight="0.18800345897674561" customColor="181, 193, 223">
-      <classMoniker Id="3d776c45-6ebb-4058-8c15-84da217bab6e" LastKnownName="MovieDetails" />
-      <nestedChildShapes>
-        <AttributeElementListCompartment Id="23862551-a8a1-467a-a891-31127b1db4f9" absoluteBounds="4.015, 1.0153356393178306, 3.3449999999999998, 7.2480466489990549" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="351a67ca-472c-4512-851f-9d1acbfeb170" isExpanded="false" absoluteBounds="4.015, 8.2733822883168848, 3.3449999999999998, 0.2011718675494194" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <AttributeElementListCompartment Id="6ab3adc7-bade-469d-9f5c-f8d81bc24c87" absoluteBounds="4.765, 2.2653356393178306, 1.4700000000000002, 4.2050779933730755" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="c1b837fd-1f37-4824-ad4e-9e6ac3987c71" absoluteBounds="4.765, 6.4804136326909054, 1.4700000000000002, 0.52148435761531164" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

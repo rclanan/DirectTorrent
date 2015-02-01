@@ -56,12 +56,12 @@ namespace DirectTorrent.Data.Yify.Models
         public int Seeds { get; private set; }
         public int Peers { get; private set; }
         public string Size { get; private set; }
-        public int SizeBytes { get; private set; }
+        public long SizeBytes { get; private set; }
         public DateTime DateUploaded { get; private set; }
         public int DateUploadedUnix { get; private set; }
 
         [JsonConstructor]
-        internal Torrent(string url, string hash, string quality, int seeds, int peers, string size, int size_bytes,
+        internal Torrent(string url, string hash, string quality, int seeds, int peers, string size, long size_bytes,
             string date_uploaded, int date_uploaded_unix)
         {
             this.Url = new Uri(url);
@@ -170,7 +170,7 @@ namespace DirectTorrent.Data.Yify.Models
             this.Limit = limit;
             this.PageNumber = page_number;
             // TODO: Deep copy
-            this.Movies = movies;
+            this.Movies = movies.Select(x => (Movie)x.Clone()).ToList();
         }
     }
 

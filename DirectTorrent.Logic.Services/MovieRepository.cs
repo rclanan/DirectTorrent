@@ -9,6 +9,10 @@ namespace DirectTorrent.Logic.Services
 {
     public static class MovieRepository
     {
-        public List<Movie> 
+        public static string GetMovie()
+        {
+            var temp = DirectTorrent.Data.Yify.ApiWrapper.ApiWrapper.ListMovies().Data.Movies[0];
+            return temp.TitleLong;
+        }
     }
 }
