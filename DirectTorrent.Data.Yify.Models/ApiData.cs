@@ -6,18 +6,53 @@ using System.Text;
 
 using Newtonsoft.Json;
 
-namespace DirectTorrent.Data.ApiWrappers.Yify.ApiData
+namespace DirectTorrent.Data.Yify.Models
 {
     public interface IDataModel
     {
     }
+
+    #region Enums
+    public enum Format
+    {
+        JSON,
+        JSONP,
+        XML
+    }
+
+    public enum Quality
+    {
+        HD,
+        FHD,
+        ThreeD,
+        ALL
+    }
+
+    public enum Sort
+    {
+        Title,
+        Year,
+        Rating,
+        Peers,
+        Seeds,
+        DownloadCount,
+        LikeCount,
+        DateAdded
+    }
+
+    public enum Order
+    {
+        Ascending,
+        Descending
+    }
+    #endregion
 
     public class Torrent : ICloneable
     {
 
         public Uri Url { get; private set; }
         public string Hash { get; private set; }
-        public ApiWrapper.Quality Quality { get; private set; }
+        public Quality Quality { get; private set; }
         public int Seeds { get; private set; }
         public int Peers { get; private set; }
         public string Size { get; private set; }
@@ -40,16 +75,16 @@ namespace DirectTorrent.Data.ApiWrappers.Yify.ApiData
             this.DateUploadedUnix = date_uploaded_unix;
         }
 
-        private ApiWrapper.Quality ParseQuality(string qual)
+        private Quality ParseQuality(string qual)
         {
             switch (qual)
             {
                 case "3D":
-                    return ApiWrapper.Quality.ThreeD;
+                    return Quality.ThreeD;
                 case "1080p":
-                    return  ApiWrapper.Quality.FHD;
+                    return  Quality.FHD;
                 case "720p":
-                    return ApiWrapper.Quality.HD;
+                    return Quality.HD;
             }
             throw new ArgumentOutOfRangeException("qual");
         }

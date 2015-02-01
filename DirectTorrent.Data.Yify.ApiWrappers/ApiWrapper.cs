@@ -7,49 +7,12 @@ using System.IO;
 using System.Net.Sockets;
 
 using Newtonsoft.Json;
-using DirectTorrent.Data.ApiWrappers.Yify.ApiData;
+using DirectTorrent.Data.Yify.Models;
 
-namespace DirectTorrent.Data.ApiWrappers.Yify
+namespace DirectTorrent.Data.Yify.ApiWrappers
 {
     public static class ApiWrapper
     {
-        #region Enums
-
-        // Enums for enforcing the value range of some api parameters
-        public enum Format
-        {
-            JSON,
-            JSONP,
-            XML
-        }
-
-        public enum Quality
-        {
-            HD,
-            FHD,
-            ThreeD,
-            ALL
-        }
-
-        public enum Sort
-        {
-            Title,
-            Year,
-            Rating,
-            Peers,
-            Seeds,
-            DownloadCount,
-            LikeCount,
-            DateAdded
-        }
-
-        public enum Order
-        {
-            Ascending,
-            Descending
-        }
-
-        #endregion
 
         #region Enum Parsers
 

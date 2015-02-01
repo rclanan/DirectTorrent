@@ -17,11 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "DirectTorrent.Modeling", "DirectTorrent.Modeling\DirectTorrent.Modeling.modelproj", "{BC4CD032-D61C-4738-B4BB-066F9A1D6014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.ApiWrappers", "DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.ApiWrappers.csproj", "{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.Yify.ApiWrappers", "DirectTorrent.Data.Yify.ApiWrappers\DirectTorrent.Data.Yify.ApiWrappers.csproj", "{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.Services", "DirectTorrent.Logic.Services\DirectTorrent.Logic.Services.csproj", "{C0739FBC-758B-4A58-8D95-60E002DAFD0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.DTO", "DirectTorrent.Logic.DTO\DirectTorrent.Logic.DTO.csproj", "{27727704-EA27-496F-BBB9-7B1878AA4C05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.Models", "DirectTorrent.Logic.Model\DirectTorrent.Logic.Models.csproj", "{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.Yify.Models", "DirectTorrent.Data.Yify.Models\DirectTorrent.Data.Yify.Models.csproj", "{CF058CC9-4A20-4CBC-A25F-48B01E79D828}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yify", "Yify", "{08F68C95-E81D-4F74-801F-142134025C32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,17 +45,23 @@ Global
 		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0739FBC-758B-4A58-8D95-60E002DAFD0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27727704-EA27-496F-BBB9-7B1878AA4C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF058CC9-4A20-4CBC-A25F-48B01E79D828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF058CC9-4A20-4CBC-A25F-48B01E79D828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF058CC9-4A20-4CBC-A25F-48B01E79D828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF058CC9-4A20-4CBC-A25F-48B01E79D828}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17} = {1C94DE42-5314-4878-BEA4-4E155AC0497E}
+		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17} = {08F68C95-E81D-4F74-801F-142134025C32}
 		{C0739FBC-758B-4A58-8D95-60E002DAFD0C} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
-		{27727704-EA27-496F-BBB9-7B1878AA4C05} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
+		{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
+		{CF058CC9-4A20-4CBC-A25F-48B01E79D828} = {08F68C95-E81D-4F74-801F-142134025C32}
+		{08F68C95-E81D-4F74-801F-142134025C32} = {1C94DE42-5314-4878-BEA4-4E155AC0497E}
 	EndGlobalSection
 EndGlobal

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DirectTorrent.Logic.DTO
+namespace DirectTorrent.Logic.Models
 {
-    public class Class1
+    class Movie
     {
     }
 }

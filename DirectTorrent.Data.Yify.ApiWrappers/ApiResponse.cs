@@ -5,9 +5,9 @@ using System.Text;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using DirectTorrent.Data.ApiWrappers.Yify.ApiData;
+using DirectTorrent.Data.Yify.Models;
 
-namespace DirectTorrent.Data.ApiWrappers.Yify
+namespace DirectTorrent.Data.Yify.ApiWrappers
 {
     public class Meta
     {

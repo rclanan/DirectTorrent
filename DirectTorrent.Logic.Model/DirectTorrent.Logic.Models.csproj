@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C0739FBC-758B-4A58-8D95-60E002DAFD0C}</ProjectGuid>
+    <ProjectGuid>{A4B7F9D9-CA54-4BA0-AEFB-F82BDB371F71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectTorrent.Logic.Services</RootNamespace>
-    <AssemblyName>DirectTorrent.Logic.Services</AssemblyName>
+    <RootNamespace>DirectTorrent.Logic.Models</RootNamespace>
+    <AssemblyName>DirectTorrent.Logic.Models</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,18 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MovieRepository.cs" />
+    <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DirectTorrent.Data.ApiWrappers\DirectTorrent.Data.Yify.ApiWrappers.csproj">
-      <Project>{8ccf7c6e-42cb-4646-a22b-0c5e42d11e17}</Project>
-      <Name>DirectTorrent.Data.Yify.ApiWrappers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DirectTorrent.Logic.Model\DirectTorrent.Logic.Models.csproj">
-      <Project>{a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71}</Project>
-      <Name>DirectTorrent.Logic.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
