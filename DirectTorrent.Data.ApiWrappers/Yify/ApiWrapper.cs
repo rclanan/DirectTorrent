@@ -71,7 +71,7 @@ namespace DirectTorrent.Data.ApiWrappers.Yify
             switch (quality)
             {
                 case Quality.HD:
-                    return "3D";
+                    return "720p";
                 case Quality.FHD:
                     return "1080p";
                 case Quality.ThreeD:
