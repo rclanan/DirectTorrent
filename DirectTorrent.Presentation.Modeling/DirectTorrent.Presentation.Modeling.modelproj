@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{bc4cd032-d61c-4738-b4bb-066f9a1d6014}</ProjectGuid>
     <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
-    <Name>DirectTorrent.Modeling</Name>
+    <Name>DirectTorrent.Presentation.Modeling</Name>
     <RootNamespace>DirectTorrent.Modeling</RootNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
