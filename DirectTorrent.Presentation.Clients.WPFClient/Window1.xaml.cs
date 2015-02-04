@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -25,7 +26,10 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(DirectTorrent.Logic.Services.MovieRepository.GetMovie());
+            System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            var temp = DirectTorrent.Logic.Services.MovieRepository.Yify.GetDummyData();
+            Debug.WriteLine("Total execution time: " + timer.Elapsed);
+            MessageBox.Show(temp);
         }
     }
 }

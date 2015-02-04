@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -9,10 +10,31 @@ namespace DirectTorrent.Logic.Services
 {
     public static class MovieRepository
     {
-        public static string GetMovie()
+        public static class Yify
         {
-            var temp = DirectTorrent.Data.Yify.ApiWrapper.ApiWrapper.ListMovies().Data.Movies[0];
-            return temp.TitleLong;
+            public static string GetDummyData()
+            {
+                System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+                var temp = DirectTorrent.Data.Yify.ApiWrapper.ApiWrapper.DummyMovieData().Data.Movies[0];
+                Debug.WriteLine("Constructing movie cache: " + timer.Elapsed);
+                timer.Stop();
+                return temp.TitleLong;
+            }
+
+            public static string ListUpcomingMovies()
+            {
+                throw new NotImplementedException();
+            }
+
+            public static string GetMovieDetails()
+            {
+                throw new NotImplementedException();
+            }
+
+            public static string ListMovies()
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

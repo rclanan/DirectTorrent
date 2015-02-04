@@ -54,6 +54,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="list_movies.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

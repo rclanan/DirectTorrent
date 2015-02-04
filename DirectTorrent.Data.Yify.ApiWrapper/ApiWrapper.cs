@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Net;
@@ -201,6 +202,20 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
                 // Parsing the response and returning it
                 return new ApiResponse<MovieDetailsData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
             }
+        }
+
+        // Testing method
+        public static ApiResponse<ListMoviesData> DummyMovieData()
+        {
+            System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
+            var text = File.ReadAllText("list_movies.json");
+            Debug.WriteLine("Reading file: " + timer.Elapsed);
+            var temp =
+                new ApiResponse<ListMoviesData>(
+                    JsonConvert.DeserializeObject<ApiResponseRaw>(text));
+            Debug.WriteLine("Parsing JSON: " + timer.Elapsed);
+            timer.Stop();
+            return temp;
         }
 
         #endregion
