@@ -42,6 +42,12 @@
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DirectTorrent.Data.Yify.Models\DirectTorrent.Data.Yify.Models.csproj">
+      <Project>{cf058cc9-4a20-4cbc-a25f-48b01e79d828}</Project>
+      <Name>DirectTorrent.Data.Yify.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using DirectTorrent.Data.Yify.Models;
+
 namespace DirectTorrent.Logic.Models
 {
     /// <summary>
@@ -126,5 +128,11 @@ namespace DirectTorrent.Logic.Models
         /// Gets the date when the movie was uploaded as a unix timestamp.
         /// </summary>
         public int DateUploadedUnix { get; private set; }
+
+        public Movie(Data.Yify.Models.Movie source)
+        {
+            //TODO: Write constructor, object-object mapper
+            throw new NotImplementedException();
+        }
     }
 }

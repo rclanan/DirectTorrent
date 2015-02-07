@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-using DirectTorrent.Logic.Models;
+using DirectTorrent.Data.Yify.ApiWrapper;
+using DirectTorrent.Data.Yify.Models;
+using Movie = DirectTorrent.Logic.Models.Movie;
 
 namespace DirectTorrent.Logic.Services
 {
@@ -21,19 +23,32 @@ namespace DirectTorrent.Logic.Services
                 return temp.TitleLong;
             }
 
-            public static string ListUpcomingMovies()
+            public static Movie ListUpcomingMovies()
             {
+                //TODO: No upcomming data
                 throw new NotImplementedException();
             }
 
-            public static string GetMovieDetails()
+            public static Movie GetMovieDetails(int movieId)
             {
+                //TODO: No business model
                 throw new NotImplementedException();
             }
 
-            public static string ListMovies()
+            public static List<Movie> ListMovies(byte limit = 20, uint page = 1,
+                Quality quality = Quality.ALL, byte minimumRating = 0, string queryTerm = "", string genre = "ALL",
+                Sort sortBy = Sort.DateAdded, Order orderBy = Order.Descending)
             {
-                throw new NotImplementedException();
+                var temp = new List<Movie>();
+                var source = ApiWrapper.ListMovies(Format.JSON, limit, page, quality, minimumRating, queryTerm, genre,
+                    sortBy, orderBy);
+                source.Data.Movies.ForEach(x =>
+                {
+                    var tempMov = new Movie(x);
+                    temp.Add(tempMov);
+                });
+                return temp;
+                //TODO: Test
             }
         }
     }
