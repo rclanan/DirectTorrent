@@ -6,7 +6,9 @@ using System.Text;
 
 using DirectTorrent.Data.Yify.ApiWrapper;
 using DirectTorrent.Data.Yify.Models;
+using DirectTorrent.Logic.Models;
 using Movie = DirectTorrent.Logic.Models.Movie;
+using Quality = DirectTorrent.Data.Yify.Models.Quality;
 
 namespace DirectTorrent.Logic.Services
 {
@@ -25,14 +27,15 @@ namespace DirectTorrent.Logic.Services
 
             public static Movie ListUpcomingMovies()
             {
-                //TODO: No upcomming data
+                // TODO: No upcomming movies data
                 throw new NotImplementedException();
             }
 
-            public static Movie GetMovieDetails(int movieId)
+            public static MovieDetails GetMovieDetails(int movieId)
             {
-                //TODO: No business model
-                throw new NotImplementedException();
+                MovieDetailsData temp = ApiWrapper.GetMovieDetails(movieId).Data;
+                return new MovieDetails(temp);
+                // TODO: Test
             }
 
             public static List<Movie> ListMovies(byte limit = 20, uint page = 1,
@@ -48,7 +51,7 @@ namespace DirectTorrent.Logic.Services
                     temp.Add(tempMov);
                 });
                 return temp;
-                //TODO: Test
+                // TODO: Test
             }
         }
     }

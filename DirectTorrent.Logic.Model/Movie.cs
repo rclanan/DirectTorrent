@@ -8,60 +8,6 @@ using DirectTorrent.Data.Yify.Models;
 namespace DirectTorrent.Logic.Models
 {
     /// <summary>
-    /// Represents the quality of the video.
-    /// </summary>
-    public enum Quality
-    {
-        HD,
-        FHD,
-        ThreeD,
-        ALL
-    }
-
-    /// <summary>
-    /// Represents the data associated to a torrent.
-    /// </summary>
-    public class Torrent
-    {
-        /// <summary>
-        /// Gets the url of the torrent.
-        /// </summary>
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// Gets the hash of the torrent.
-        /// </summary>
-        public string Hash { get; private set; }
-        /// <summary>
-        /// Gets the quality of the movie torrent.
-        /// </summary>
-        public Quality Quality { get; private set; }
-        /// <summary>
-        /// Gets the amount of seeds.
-        /// </summary>
-        public int Seeds { get; private set; }
-        /// <summary>
-        /// Gets the amount of peers.
-        /// </summary>
-        public int Peers { get; private set; }
-        /// <summary>
-        /// Gets the size of the movie.
-        /// </summary>
-        public string Size { get; private set; }
-        /// <summary>
-        /// Gets the size of the movie represented in bytes.
-        /// </summary>
-        public long SizeBytes { get; private set; }
-        /// <summary>
-        /// Gets the date when the torrent was uploaded.
-        /// </summary>
-        public DateTime DateUploaded { get; private set; }
-        /// <summary>
-        /// Gets the date when the torrent was uploaded as a unix timestamp.
-        /// </summary>
-        public int DateUploadedUnix { get; private set; }
-    }
-
-    /// <summary>
     /// Represents the data associated to the movie.
     /// </summary>
     public class Movie
@@ -131,8 +77,26 @@ namespace DirectTorrent.Logic.Models
 
         public Movie(Data.Yify.Models.Movie source)
         {
-            //TODO: Write constructor, object-object mapper
-            throw new NotImplementedException();
+            Movie temp = null;
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Movie, Movie>();
+            temp = AutoMapper.Mapper.Map<Movie>(source);
+            this.Id = temp.Id;
+            this.Url = temp.Url;
+            this.ImdbCode = temp.ImdbCode;
+            this.Title = temp.Title;
+            this.TitleLong = temp.TitleLong;
+            this.Year = temp.Year;
+            this.Rating = temp.Rating;
+            this.Runtime = temp.Runtime;
+            this.Genres = temp.Genres;
+            this.Language = temp.Language;
+            this.MpaRating = temp.MpaRating;
+            this.SmallCoverImage = temp.SmallCoverImage;
+            this.MediumCoverImage = temp.MediumCoverImage;
+            this.State = temp.State;
+            this.Torrents = temp.Torrents;
+            this.DateUploaded = temp.DateUploaded;
+            this.DateUploadedUnix = temp.DateUploadedUnix;
         }
     }
 }

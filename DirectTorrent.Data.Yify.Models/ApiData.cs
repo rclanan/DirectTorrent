@@ -277,7 +277,6 @@ namespace DirectTorrent.Data.Yify.Models
             this.MovieCount = movie_count;
             this.Limit = limit;
             this.PageNumber = page_number;
-            // TODO: Deep copy
             this.Movies = movies.Select(x => (Movie)x.Clone()).ToList();
         }
     }
