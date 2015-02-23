@@ -13,6 +13,7 @@ namespace DirectTorrent.Data.Yify.Models
     }
 
     #region Enums
+
     // Enums enforcing the parameter value ranges.
 
     /// <summary>
@@ -60,6 +61,7 @@ namespace DirectTorrent.Data.Yify.Models
         Ascending,
         Descending
     }
+
     #endregion
 
     /// <summary>
@@ -72,34 +74,42 @@ namespace DirectTorrent.Data.Yify.Models
         /// Gets the url of the torrent.
         /// </summary>
         public Uri Url { get; private set; }
+
         /// <summary>
         /// Gets the hash of the torrent.
         /// </summary>
         public string Hash { get; private set; }
+
         /// <summary>
         /// Gets the quality of the movie torrent.
         /// </summary>
         public Quality Quality { get; private set; }
+
         /// <summary>
         /// Gets the amount of seeds.
         /// </summary>
         public int Seeds { get; private set; }
+
         /// <summary>
         /// Gets the amount of peers.
         /// </summary>
         public int Peers { get; private set; }
+
         /// <summary>
         /// Gets the size of the movie.
         /// </summary>
         public string Size { get; private set; }
+
         /// <summary>
         /// Gets the size of the movie represented in bytes.
         /// </summary>
         public long SizeBytes { get; private set; }
+
         /// <summary>
         /// Gets the date when the torrent was uploaded.
         /// </summary>
         public DateTime DateUploaded { get; private set; }
+
         /// <summary>
         /// Gets the date when the torrent was uploaded as a unix timestamp.
         /// </summary>
@@ -128,7 +138,7 @@ namespace DirectTorrent.Data.Yify.Models
                 case "3D":
                     return Quality.ThreeD;
                 case "1080p":
-                    return  Quality.FHD;
+                    return Quality.FHD;
                 case "720p":
                     return Quality.HD;
             }
@@ -140,7 +150,7 @@ namespace DirectTorrent.Data.Yify.Models
             Torrent temp = (Torrent)this.MemberwiseClone();
             temp.Url = new Uri(this.Url.OriginalString);
 
-            return (object) temp;
+            return (object)temp;
         }
     }
 
@@ -153,60 +163,75 @@ namespace DirectTorrent.Data.Yify.Models
         /// Gets the ID of the movie.
         /// </summary>
         public int Id { get; private set; }
+
         /// <summary>
         /// Gets the url of the movie.
         /// </summary>
         public Uri Url { get; private set; }
+
         /// <summary>
         /// Gets the imdb code of the movie.
         /// </summary>
         public string ImdbCode { get; private set; }
+
         /// <summary>
         /// Gets the title of movie.
         /// </summary>
         public string Title { get; private set; }
+
         /// <summary>
         /// Gets the long title of the movie.
         /// </summary>
         public string TitleLong { get; private set; }
+
         /// <summary>
         /// Gets the release year of the movie.
         /// </summary>
         public int Year { get; private set; }
+
         /// <summary>
         /// Gets the movie rating.
         /// </summary>
         public double Rating { get; private set; }
+
         /// <summary>
         /// Gets the movie runtime.
         /// </summary>
         public int Runtime { get; private set; }
+
         /// <summary>
         /// Gets the list of genres to which the movie belongs.
         /// </summary>
         public List<string> Genres { get; private set; }
+
         /// <summary>
         /// Gets the language of the movie.
         /// </summary>
         public string Language { get; private set; }
+
         /// <summary>
         /// Gets the mpa rating of the movie.
         /// </summary>
         public string MpaRating { get; private set; }
+
         public string SmallCoverImage { get; private set; }
         public string MediumCoverImage { get; private set; }
+
         /// <summary>
         /// Gets the current movie state.
         /// </summary>
         public string State { get; private set; }
+
         /// <summary>
         /// Gets the list of torrents associated to the movie.
         /// </summary>
         public List<Torrent> Torrents { get; private set; }
+
         /// <summary>
         /// Gets the date when the movie was uploaded.
         /// </summary>
         public DateTime DateUploaded { get; private set; }
+
         /// <summary>
         /// Gets the date when the movie was uploaded as a unix timestamp.
         /// </summary>
@@ -243,9 +268,51 @@ namespace DirectTorrent.Data.Yify.Models
             Movie temp = (Movie)this.MemberwiseClone();
             temp.Url = new Uri(this.Url.OriginalString);
             temp.Genres = new List<string>(this.Genres);
-            temp.Torrents = this.Torrents.Select(x => (Torrent) x.Clone()).ToList();
-            return (object) temp;
+            temp.Torrents = this.Torrents.Select(x => (Torrent)x.Clone()).ToList();
+            return (object)temp;
 
+        }
+    }
+
+    public class UpcomingMovie : ICloneable
+    {
+        /// <summary>
+        /// Gets the title of movie.
+        /// </summary>
+        public string Title { get; private set; }
+        /// <summary>
+        /// Gets the release year of the movie.
+        /// </summary>
+        public int Year { get; private set; }
+        /// <summary>
+        /// Gets the imdb code of the movie.
+        /// </summary>
+        public string ImdbCode { get; private set; }
+        public string MediumCoverImage { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was added.
+        /// </summary>
+        public string DateAdded { get; private set; }
+        /// <summary>
+        /// Gets the date when the movie was added as a unix timestamp.
+        /// </summary>
+        public int DateAddedUnix { get; private set; }
+
+        [JsonConstructor]
+        internal UpcomingMovie(string title, int year, string imdb_code, string medium_cover_image, string date_added,
+            int date_added_unix)
+        {
+            this.Title = title;
+            this.Year = year;
+            this.ImdbCode = imdb_code;
+            this.MediumCoverImage = medium_cover_image;
+            this.DateAdded = date_added;
+            this.DateAddedUnix = date_added_unix;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 
@@ -258,14 +325,17 @@ namespace DirectTorrent.Data.Yify.Models
         /// Gets the total number of movies.
         /// </summary>
         public int MovieCount { get; private set; }
+
         /// <summary>
         /// Gets the amount of movies limited by the query.
         /// </summary>
         public int Limit { get; private set; }
+
         /// <summary>
         /// Gets the page of movies queried.
         /// </summary>
         public int PageNumber { get; private set; }
+
         /// <summary>
         /// Gets the movies returned by the query.
         /// </summary>
@@ -281,103 +351,19 @@ namespace DirectTorrent.Data.Yify.Models
         }
     }
 
+    /// <summary>
+    /// Represents the data returned by the list_upcoming API
+    /// </summary>
     public class UpcomingMoviesData : IDataModel
     {
-        //._. TODO: When there's data to model
-    }
-
-    /// <summary>
-    /// Represents the data associated to the director.
-    /// </summary>
-    public class Director : ICloneable
-    {
-        /// <summary>
-        /// Gets the director's name.
-        /// </summary>
-        public string Name { get; private set; }
-        public string SmallImage { get; private set; }
-        public string MediumImage { get; private set; }
+        public int UpcomingMoviesCount { get; private set; }
+        public List<UpcomingMovie> UpcomingMovies { get; private set; }
 
         [JsonConstructor]
-        internal Director(string name, string small_image, string medium_image)
+        internal UpcomingMoviesData(int upcoming_movies_count, List<UpcomingMovie> upcoming_movies)
         {
-            this.Name = name;
-            // TODO: Convert to images?
-            this.SmallImage = small_image;
-            this.MediumImage = medium_image;
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-    }
-
-    /// <summary>
-    /// Represents the the data associated to the actor.
-    /// </summary>
-    public class Actor : ICloneable
-    {
-        /// <summary>
-        /// Gets the actor's name.
-        /// </summary>
-        public string Name { get; private set; }
-        /// <summary>
-        /// Gets the actor's character name.
-        /// </summary>
-        public string CharacterName { get; private set; }
-        public string SmallImage { get; private set; }
-        public string MediumImage { get; private set; }
-
-        [JsonConstructor]
-        internal Actor(string name, string character_name, string small_image, string medium_image)
-        {
-            this.Name = name;
-            this.CharacterName = character_name;
-            // TODO: Convert to images?
-            this.SmallImage = small_image;
-            this.MediumImage = medium_image;
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
-        }
-    }
-
-    /// <summary>
-    /// Represents the set of images associated to the movie.
-    /// </summary>
-    public class Images
-    {
-        public string BackgroundImage { get; private set; }
-        public string SmallCoverImage { get; private set; }
-        public string MediumCoverImage { get; private set; }
-        public string LargeCoverImage { get; private set; }
-        public string MediumScreenshotImage1 { get; private set; }
-        public string MediumScreenshotImage2 { get; private set; }
-        public string MediumScreenshotImage3 { get; private set; }
-        public string LargeScreenshotImage1 { get; private set; }
-        public string LargeScreenshotImage2 { get; private set; }
-        public string LargeScreenshotImage3 { get; private set; }
-
-        [JsonConstructor]
-        internal Images(string background_image, string small_cover_image, string medium_cover_image,
-            string large_cover_image, string medium_screenshot_image1, string medium_screenshot_image2,
-            string medium_screenshot_image3, string large_screenshot_image1, string large_screenshot_image2,
-            string large_screenshot_image3)
-        {
-            // TODO: Convert to images?
-            this.BackgroundImage = background_image;
-            this.SmallCoverImage = small_cover_image;
-            this.LargeCoverImage = large_cover_image;
-            this.MediumCoverImage = medium_cover_image;
-            this.MediumScreenshotImage1 = medium_screenshot_image1;
-            this.MediumScreenshotImage2 = medium_screenshot_image2;
-            this.MediumScreenshotImage3 = medium_screenshot_image3;
-            this.LargeScreenshotImage1 = large_screenshot_image1;
-            this.LargeScreenshotImage2 = large_screenshot_image2;
-            this.LargeScreenshotImage3 = large_screenshot_image3;
+            this.UpcomingMoviesCount = upcoming_movies_count;
+            this.UpcomingMovies = upcoming_movies.Select(x => (UpcomingMovie)x.Clone()).ToList();
         }
     }
 

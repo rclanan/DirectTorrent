@@ -27,9 +27,9 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
-            var temp = DirectTorrent.Logic.Services.MovieRepository.Yify.GetDummyData();
+            var temp = DirectTorrent.Logic.Services.MovieRepository.Yify.ListUpcomingMovies();
             Debug.WriteLine("Total execution time: " + timer.Elapsed);
-            MessageBox.Show(temp);
+            MessageBox.Show(temp[0].Title);
         }
     }
 }

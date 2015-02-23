@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
 using DirectTorrent.Data.Yify.ApiWrapper;
 using DirectTorrent.Data.Yify.Models;
 using DirectTorrent.Logic.Models;
+using UpcomingMovie = DirectTorrent.Logic.Models.UpcomingMovie;
 using Movie = DirectTorrent.Logic.Models.Movie;
 using Quality = DirectTorrent.Data.Yify.Models.Quality;
 
@@ -19,16 +19,23 @@ namespace DirectTorrent.Logic.Services
             public static string GetDummyData()
             {
                 System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
-                var temp = DirectTorrent.Data.Yify.ApiWrapper.ApiWrapper.DummyMovieData().Data.Movies[0];
+                var temp = DirectTorrent.Data.Yify.ApiWrapper.ApiWrapper.DummyMovieData().Data.Movies[14];
                 Debug.WriteLine("Constructing movie cache: " + timer.Elapsed);
                 timer.Stop();
                 return temp.TitleLong;
             }
 
-            public static Movie ListUpcomingMovies()
+            public static List<UpcomingMovie> ListUpcomingMovies()
             {
-                // TODO: No upcomming movies data
-                throw new NotImplementedException();
+                var temp = new List<UpcomingMovie>();
+                var source = ApiWrapper.ListUpcomingMovies();
+                source.Data.UpcomingMovies.ForEach(x =>
+                {
+                    var tempMov = new UpcomingMovie(x);
+                    temp.Add(tempMov);
+                });
+
+                return temp;
             }
 
             public static MovieDetails GetMovieDetails(int movieId)

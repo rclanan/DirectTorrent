@@ -79,6 +79,7 @@ namespace DirectTorrent.Logic.Models
         {
             Movie temp = null;
             AutoMapper.Mapper.CreateMap<Data.Yify.Models.Movie, Movie>();
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Torrent, Torrent>();
             temp = AutoMapper.Mapper.Map<Movie>(source);
             this.Id = temp.Id;
             this.Url = temp.Url;
@@ -97,6 +98,11 @@ namespace DirectTorrent.Logic.Models
             this.Torrents = temp.Torrents;
             this.DateUploaded = temp.DateUploaded;
             this.DateUploadedUnix = temp.DateUploadedUnix;
+        }
+
+        private Movie()
+        {
+            
         }
     }
 }

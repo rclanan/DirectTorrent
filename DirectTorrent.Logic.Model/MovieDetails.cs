@@ -7,7 +7,7 @@ using System.Text;
 namespace DirectTorrent.Logic.Models
 {
     /// <summary>
-    /// Represents the data returned by the movie_details API
+    /// Represents the data associated to the movie, contains details.
     /// </summary>
     public class MovieDetails
     {
@@ -119,6 +119,12 @@ namespace DirectTorrent.Logic.Models
         public MovieDetails(DirectTorrent.Data.Yify.Models.MovieDetailsData source)
         {
             MovieDetails temp = null;
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Torrent, Torrent>();
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Actor, Actor>();
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Director, Director>();
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.Images, Images>();
+            AutoMapper.Mapper.CreateMap<Data.Yify.Models.MovieDetailsData, MovieDetails>();
+            temp = AutoMapper.Mapper.Map<MovieDetails>(source);
             this.Id = temp.Id;
             this.Url = temp.Url;
             this.ImdbCode = temp.ImdbCode;
@@ -145,6 +151,10 @@ namespace DirectTorrent.Logic.Models
             this.Torrents = temp.Torrents;
             this.Directors = temp.Directors;
             this.Actors = temp.Actors;
+        }
+
+        private MovieDetails()
+        {
         }
     }
 }
