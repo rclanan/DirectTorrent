@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+using System.Net;
+using System.Threading;
 using DirectTorrent.Data.Yify.ApiWrapper;
 using DirectTorrent.Data.Yify.Models;
 using DirectTorrent.Logic.Models;
@@ -42,7 +46,6 @@ namespace DirectTorrent.Logic.Services
             {
                 MovieDetailsData temp = ApiWrapper.GetMovieDetails(movieId).Data;
                 return new MovieDetails(temp);
-                // TODO: Test
             }
 
             public static List<Movie> ListMovies(byte limit = 20, uint page = 1,
@@ -58,7 +61,6 @@ namespace DirectTorrent.Logic.Services
                     temp.Add(tempMov);
                 });
                 return temp;
-                // TODO: Test
             }
         }
     }
