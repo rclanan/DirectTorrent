@@ -116,6 +116,10 @@ namespace DirectTorrent.Logic.Models
         /// </summary>
         public List<Actor> Actors { get; private set; }
 
+        /// <summary>
+        /// Maps a data transfer object to a business model.
+        /// </summary>
+        /// <param name="source">The DTO that is to be mapped to a business model.</param>
         public MovieDetails(DirectTorrent.Data.Yify.Models.MovieDetailsData source)
         {
             MovieDetails temp = null;
@@ -153,6 +157,7 @@ namespace DirectTorrent.Logic.Models
             this.Actors = temp.Actors;
         }
 
+        // A constructor that AutoMapper will use. DO NOT REMOVE!
         private MovieDetails()
         {
         }

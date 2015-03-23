@@ -138,7 +138,7 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
         {
             // Parameter value range checking
             if (limit > 50 || limit < 1)
-                throw new ArgumentOutOfRangeException("limit", limit, "Must be between 1 - 50 (inclusive).");
+                throw new ArgumentOutOfRangeException("limit", limit, "Limit must be between 1 - 50 (inclusive).");
             if (minimumRating > 9)
                 throw new ArgumentOutOfRangeException("minimumRating", minimumRating,
                     "Must be between 0 - 9 (inclusive).");

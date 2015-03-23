@@ -75,6 +75,10 @@ namespace DirectTorrent.Logic.Models
         /// </summary>
         public int DateUploadedUnix { get; private set; }
 
+        /// <summary>
+        /// Maps a data transfer object to a business model.
+        /// </summary>
+        /// <param name="source">The DTO that is to be mapped to a business model.</param>
         public Movie(Data.Yify.Models.Movie source)
         {
             Movie temp = null;
@@ -100,6 +104,7 @@ namespace DirectTorrent.Logic.Models
             this.DateUploadedUnix = temp.DateUploadedUnix;
         }
 
+        // A constructor that AutoMapper will use. DO NOT REMOVE!
         private Movie()
         {
             

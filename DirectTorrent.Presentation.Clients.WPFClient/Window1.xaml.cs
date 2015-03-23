@@ -31,22 +31,29 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
             InitializeComponent();
         }
 
-        private Process server;
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            ProcessStartInfo info = new ProcessStartInfo() { FileName = "DirectTorrent.Logic.NodeServer.exe" };
-            server = Process.Start(info);
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            new WebClient().DownloadData("http://localhost:1337/shutdown.html");
-        }
-
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.GetMovieDetails(1124);
-            lbl1.Content = listaFilmova.Actors[0].Name;
+            var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.ListMovies();
+            lbl1.Content = listaFilmova[0].Torrents[0].Url;
+        }
+
+        private void btnStartNode_Click(object sender, RoutedEventArgs e)
+        {
+            var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.ListMovies();
+            var torrent = MovieRepository.GetTorrentMagnetUri(listaFilmova[0].Torrents[0].Hash,
+                listaFilmova[0].TitleLong);
+            File.WriteAllText("fajl.txt", torrent);
+            NodeServerManager.StartServer(torrent);
+        }
+
+        private void btnStopNode_Click(object sender, RoutedEventArgs e)
+        {
+            NodeServerManager.CloseServer();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            NodeServerManager.CloseServer();
         }
     }
 }
