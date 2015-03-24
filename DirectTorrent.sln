@@ -30,9 +30,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Data.Yify.Api
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{7C278DA5-20C1-43E1-8D77-F354F98B62CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Presentation.Clients.WPFClient", "DirectTorrent.Presentation.Clients.WPFClient\DirectTorrent.Presentation.Clients.WPFClient.csproj", "{ABCEF1CD-472B-4523-B057-ADC463A871CF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Logic.NodeServer", "DirectTorrent.Logic.NodeServer\DirectTorrent.Logic.NodeServer.csproj", "{5B7716AB-0CB5-4E43-BB66-69D8074560A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectTorrent.Presentation.Clients.WPFClient", "DirectTorrent.Presentation.Clients.WPFClient\DirectTorrent.Presentation.Clients.WPFClient.csproj", "{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,14 +56,14 @@ Global
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABCEF1CD-472B-4523-B057-ADC463A871CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABCEF1CD-472B-4523-B057-ADC463A871CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABCEF1CD-472B-4523-B057-ADC463A871CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABCEF1CD-472B-4523-B057-ADC463A871CF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5B7716AB-0CB5-4E43-BB66-69D8074560A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5B7716AB-0CB5-4E43-BB66-69D8074560A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B7716AB-0CB5-4E43-BB66-69D8074560A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B7716AB-0CB5-4E43-BB66-69D8074560A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +75,7 @@ Global
 		{08F68C95-E81D-4F74-801F-142134025C32} = {1C94DE42-5314-4878-BEA4-4E155AC0497E}
 		{8CCF7C6E-42CB-4646-A22B-0C5E42D11E17} = {08F68C95-E81D-4F74-801F-142134025C32}
 		{7C278DA5-20C1-43E1-8D77-F354F98B62CF} = {5F000477-FF77-45EB-A750-C4CE237E6AEC}
-		{ABCEF1CD-472B-4523-B057-ADC463A871CF} = {7C278DA5-20C1-43E1-8D77-F354F98B62CF}
 		{5B7716AB-0CB5-4E43-BB66-69D8074560A4} = {E08E3848-6560-42EC-998F-EE7E55F6D961}
+		{8ACA8EF5-F4AB-4B93-960A-7AC06407D29C} = {7C278DA5-20C1-43E1-8D77-F354F98B62CF}
 	EndGlobalSection
 EndGlobal
