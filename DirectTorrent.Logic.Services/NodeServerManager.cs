@@ -30,7 +30,8 @@ namespace DirectTorrent.Logic.Services
         {
             // Kills the server
             if (server != null)
-                server.Kill();
+                if (!server.HasExited)
+                    server.Kill();
         }
     }
 }

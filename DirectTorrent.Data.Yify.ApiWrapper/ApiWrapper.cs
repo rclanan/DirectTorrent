@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Net;
 using System.IO;
 using System.Net.Sockets;
 
+using System.Reflection;
+using System.Resources;
 using Newtonsoft.Json;
 using DirectTorrent.Data.Yify.Models;
 
@@ -207,8 +210,20 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
         // Testing method
         public static ApiResponse<ListMoviesData> DummyMovieData()
         {
+            StreamReader _textStreamReader;
+
+            try
+            {
+                var _assembly = Assembly.GetExecutingAssembly();
+                _textStreamReader =
+                    new StreamReader(_assembly.GetManifestResourceStream("DirectTorrent.Data.Yify.ApiWrapper.list_movies.json"));
+            }
+            catch
+            {
+                throw new MissingManifestResourceException("Missing the dummy movie resource.");
+            }
             System.Diagnostics.Stopwatch timer = System.Diagnostics.Stopwatch.StartNew();
-            var text = File.ReadAllText("list_movies.json");
+            var text = _textStreamReader.ReadToEnd();
             Debug.WriteLine("Reading file: " + timer.Elapsed);
             var temp =
                 new ApiResponse<ListMoviesData>(

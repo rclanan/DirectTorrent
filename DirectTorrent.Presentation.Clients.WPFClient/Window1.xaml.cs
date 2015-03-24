@@ -33,8 +33,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
 
         private void btnTest_Click(object sender, RoutedEventArgs e)
         {
-            var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.ListMovies();
-            lbl1.Content = listaFilmova[0].Torrents[0].Url;
+            var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.GetDummyData();
+            lbl1.Content = listaFilmova;
         }
 
         private void btnStartNode_Click(object sender, RoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
             var listaFilmova = DirectTorrent.Logic.Services.MovieRepository.Yify.ListMovies();
             var torrent = MovieRepository.GetTorrentMagnetUri(listaFilmova[0].Torrents[0].Hash,
                 listaFilmova[0].TitleLong);
-            File.WriteAllText("fajl.txt", torrent);
+            //File.WriteAllText("fajl.txt", torrent);
             NodeServerManager.StartServer(torrent);
         }
 
