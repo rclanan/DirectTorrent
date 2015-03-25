@@ -15,8 +15,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels.Settings
     public class AppearanceViewModel
         : NotifyPropertyChanged
     {
-        private const string FontSmall = "small";
-        private const string FontLarge = "large";
+        private const string FontSmall = "Small";
+        private const string FontLarge = "Large";
 
         // 9 accent colors from metro design principles
         private Color[] accentColors = new Color[]{

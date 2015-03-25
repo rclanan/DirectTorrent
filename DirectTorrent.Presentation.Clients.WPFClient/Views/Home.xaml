@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient.Views" xmlns:ViewModels="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient.ViewModels" x:Name="userControl" x:Class="DirectTorrent.Presentation.Clients.WPFClient.Views.Home" 
+             xmlns:local="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient.Views" 
+             xmlns:ViewModels="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient.ViewModels"
+             xmlns:wpfClient="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient"
+             x:Name="userControl" x:Class="DirectTorrent.Presentation.Clients.WPFClient.Views.Home" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Width="900" Height="500">
+             d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.DataContext>
         <ViewModels:HomeViewModel/>
     </UserControl.DataContext>
@@ -14,39 +17,46 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
         <Button Grid.Column="0" Content="Button1"/>
-        <ScrollViewer Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding listaFilmova, Mode=OneWay}">
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding LoaderVisibility}">
+            <TextBlock>Loading...</TextBlock>
+            <ProgressBar IsIndeterminate="True"/>
+        </StackPanel>
+        <ScrollViewer Grid.Column="1" Visibility="{Binding MoviesVisibility}" ScrollChanged="ScrollViewer_ScrollChanged">
+            <ItemsControl ItemsSource="{Binding ListaFilmova, Mode=OneWay}"> 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Aqua">
-                            <StackPanel Orientation="Vertical" >
-                                <Image Source="{Binding Image}" Height="200" Stretch="Uniform"/>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding Year}"/>
-                            </StackPanel>
-                        </Border>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel.Style>
+                                <Style TargetType="{x:Type StackPanel}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Opacity" Value="0.8"/>
+                                        </Trigger>
+                                        <EventTrigger RoutedEvent="StackPanel.MouseLeftButtonDown">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard TargetProperty="Opacity">
+                                                        <DoubleAnimation From="1" To="0" Duration="0:0:1" AutoReverse="True"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </StackPanel.Style>
+                            <Image Source="{Binding Image}" Height="200" Stretch="Uniform"/>
+                            <TextBlock Text="{Binding Name}" MaxWidth="145" HorizontalAlignment="Center" FontWeight="Bold" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="{Binding Year}" MaxWidth="145"  HorizontalAlignment="Center"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel ItemWidth="135" ItemHeight="235" />
+                        <WrapPanel ItemWidth="150" ItemHeight="235"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
         </ScrollViewer>
-        <!--<WrapPanel Grid.Column="1" >
-            <Border BorderThickness="1" BorderBrush="Aqua">
-                <StackPanel Orientation="Vertical" >
-                    <Image Source="test.JPG" Height="200" Stretch="Uniform"/>
-                    <TextBlock>A</TextBlock>
-                    <TextBlock>B</TextBlock>
-                </StackPanel>
-            </Border>
-            <Button Content="Button1"/>
-            <Button Content="Button1"/>
-            <Button Content="Button1"/>
-        </WrapPanel>-->
     </Grid>
 </UserControl>
