@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DirectTorrent.Presentation.Clients.WPFClient.Pages.Settings
+namespace DirectTorrent.Presentation.Clients.WPFClient.Views.Settings
 {
     /// <summary>
     /// Interaction logic for Appearance.xaml
@@ -25,7 +25,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Pages.Settings
             InitializeComponent();
 
             // create and assign the appearance view model
-            this.DataContext = new AppearanceViewModel();
+            this.DataContext = new DirectTorrent.Presentation.Clients.WPFClient.ViewModels.Settings.AppearanceViewModel();
         }
     }
 }

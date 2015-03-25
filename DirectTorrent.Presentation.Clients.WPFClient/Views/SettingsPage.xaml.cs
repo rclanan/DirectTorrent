@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DirectTorrent.Presentation.Clients.WPFClient.Pages
+namespace DirectTorrent.Presentation.Clients.WPFClient.Views
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml

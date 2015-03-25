@@ -13,7 +13,9 @@ using DirectTorrent.Data.Yify.Models;
 using DirectTorrent.Logic.Models;
 using UpcomingMovie = DirectTorrent.Logic.Models.UpcomingMovie;
 using Movie = DirectTorrent.Logic.Models.Movie;
+using Order = DirectTorrent.Data.Yify.Models.Order;
 using Quality = DirectTorrent.Data.Yify.Models.Quality;
+using Sort = DirectTorrent.Data.Yify.Models.Sort;
 
 namespace DirectTorrent.Logic.Services
 {
@@ -100,13 +102,13 @@ namespace DirectTorrent.Logic.Services
             /// <param name="orderBy">The order in which the movies will be displayed.</param>
             /// <returns>A list of movies that match the query parameters.</returns>
             public static List<Movie> ListMovies(byte limit = 20, uint page = 1,
-                Quality quality = Quality.ALL, byte minimumRating = 0, string queryTerm = "", string genre = "ALL",
-                Sort sortBy = Sort.DateAdded, Order orderBy = Order.Descending)
+                DirectTorrent.Logic.Models.Quality quality = DirectTorrent.Logic.Models.Quality.ALL, byte minimumRating = 0, string queryTerm = "", string genre = "ALL",
+                DirectTorrent.Logic.Models.Sort sortBy = DirectTorrent.Logic.Models.Sort.DateAdded, DirectTorrent.Logic.Models.Order orderBy = DirectTorrent.Logic.Models.Order.Descending)
             {
                 var temp = new List<Movie>();
                 // Queries Yify for movies
-                var source = ApiWrapper.ListMovies(Format.JSON, limit, page, quality, minimumRating, queryTerm, genre,
-                    sortBy, orderBy);
+                var source = ApiWrapper.ListMovies(Format.JSON, limit, page, qualityToQuality(quality), minimumRating, queryTerm, genre,
+                    sortToSort(sortBy), orderToOrder(orderBy));
                 // Maps DTOs to business models
                 source.Data.Movies.ForEach(x =>
                 {
@@ -115,6 +117,62 @@ namespace DirectTorrent.Logic.Services
                 });
                 return temp;
             }
+
+            #region Enum Parsers
+            private static DirectTorrent.Data.Yify.Models.Quality qualityToQuality(DirectTorrent.Logic.Models.Quality quality)
+            {
+                switch (quality)
+                {
+                    case Logic.Models.Quality.HD:
+                        return Data.Yify.Models.Quality.HD;
+                    case Logic.Models.Quality.FHD:
+                        return Data.Yify.Models.Quality.FHD;
+                    case Logic.Models.Quality.ALL:
+                        return Data.Yify.Models.Quality.ALL;
+                    case Logic.Models.Quality.ThreeD:
+                        return Data.Yify.Models.Quality.ThreeD;
+
+                }
+                throw new ArgumentException("Quality is not valid.", "quality");
+            }
+
+            private static DirectTorrent.Data.Yify.Models.Sort sortToSort(DirectTorrent.Logic.Models.Sort sort)
+            {
+                switch (sort)
+                {
+                    case Logic.Models.Sort.Title:
+                        return Data.Yify.Models.Sort.Title;
+                    case Logic.Models.Sort.Year:
+                        return Data.Yify.Models.Sort.Year;
+                    case Logic.Models.Sort.Rating:
+                        return Data.Yify.Models.Sort.Rating;
+                    case Logic.Models.Sort.Peers:
+                        return Data.Yify.Models.Sort.Peers;
+                    case Logic.Models.Sort.Seeds:
+                        return Data.Yify.Models.Sort.Seeds;
+                    case Logic.Models.Sort.DownloadCount:
+                        return Data.Yify.Models.Sort.DownloadCount;
+                    case Logic.Models.Sort.LikeCount:
+                        return Data.Yify.Models.Sort.LikeCount;
+                    case Logic.Models.Sort.DateAdded:
+                        return Data.Yify.Models.Sort.DateAdded;
+                }
+                throw new ArgumentException("Sort is not valid.", "sort");
+
+            }
+
+            private static DirectTorrent.Data.Yify.Models.Order orderToOrder(DirectTorrent.Logic.Models.Order order)
+            {
+                switch (order)
+                {
+                    case Logic.Models.Order.Ascending:
+                        return Data.Yify.Models.Order.Ascending;
+                    case Logic.Models.Order.Descending:
+                        return Data.Yify.Models.Order.Descending;
+                }
+                throw new ArgumentException("Order is valid.", "order");
+            }
+            #endregion Enum Parsers
         }
     }
 }

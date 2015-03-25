@@ -8,6 +8,11 @@ namespace DirectTorrent.Logic.Models
     /// <summary>
     /// Represents the quality of the video.
     /// </summary>
+
+    #region Enums
+    /// <summary>
+    /// Represents the quality of the video.
+    /// </summary>
     public enum Quality
     {
         HD,
@@ -15,6 +20,31 @@ namespace DirectTorrent.Logic.Models
         ThreeD,
         ALL
     }
+
+    /// <summary>
+    /// Represents the sorting criteria by which the results will be sorted.
+    /// </summary>
+    public enum Sort
+    {
+        Title,
+        Year,
+        Rating,
+        Peers,
+        Seeds,
+        DownloadCount,
+        LikeCount,
+        DateAdded
+    }
+
+    /// <summary>
+    /// Represents the order in which the results will be sorted.
+    /// </summary>
+    public enum Order
+    {
+        Ascending,
+        Descending
+    }
+    #endregion enums
 
     /// <summary>
     /// Represents the data associated to a torrent.

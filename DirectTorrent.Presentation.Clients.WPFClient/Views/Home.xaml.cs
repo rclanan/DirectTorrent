@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FirstFloor.ModernUI.Presentation;
 
-namespace DirectTorrent.Presentation.Clients.WPFClient.Pages
+namespace DirectTorrent.Presentation.Clients.WPFClient.Views
 {
     /// <summary>
     /// Interaction logic for Home.xaml

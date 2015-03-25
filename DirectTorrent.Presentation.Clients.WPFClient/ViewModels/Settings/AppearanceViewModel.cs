@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace DirectTorrent.Presentation.Clients.WPFClient.Pages.Settings
+namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels.Settings
 {
     /// <summary>
     /// A simple view model for configuring theme, font and accent colors.
@@ -63,8 +63,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Pages.Settings
         public AppearanceViewModel()
         {
             // add the default themes
-            this.themes.Add(new Link { DisplayName = "dark", Source = AppearanceManager.DarkThemeSource });
-            this.themes.Add(new Link { DisplayName = "light", Source = AppearanceManager.LightThemeSource });
+            this.themes.Add(new Link { DisplayName = "Dark", Source = AppearanceManager.DarkThemeSource });
+            this.themes.Add(new Link { DisplayName = "Light", Source = AppearanceManager.LightThemeSource });
 
             this.SelectedFontSize = AppearanceManager.Current.FontSize == FontSize.Large ? FontLarge : FontSmall;
             SyncThemeAndColor();
@@ -116,6 +116,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Pages.Settings
 
                     // and update the actual theme
                     AppearanceManager.Current.ThemeSource = value.Source;
+                    Properties.Settings.Default["Theme"] = value.DisplayName;
+                    Properties.Settings.Default.Save();
                 }
             }
         }

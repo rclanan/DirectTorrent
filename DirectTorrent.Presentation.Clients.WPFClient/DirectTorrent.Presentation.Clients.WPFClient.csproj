@@ -69,6 +69,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="Views\Settings\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -79,7 +85,7 @@
     <Compile Include="Views\Settings\Appearance.xaml.cs">
       <DependentUpon>Appearance.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Settings\AppearanceViewModel.cs" />
+    <Compile Include="ViewModels\Settings\AppearanceViewModel.cs" />
     <Page Include="Views\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -97,9 +103,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectTorrent.Logic.Model\DirectTorrent.Logic.Models.csproj">
+      <Project>{a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71}</Project>
+      <Name>DirectTorrent.Logic.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DirectTorrent.Logic.Services\DirectTorrent.Logic.Services.csproj">
       <Project>{c0739fbc-758b-4a58-8d95-60e002dafd0c}</Project>
       <Name>DirectTorrent.Logic.Services</Name>
