@@ -108,16 +108,16 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
                     WebRequest.Create(string.Format("https://yts.re/api/v2/list_upcoming.{0}", ParseFormat(format)))
                         .GetResponse()
                         .GetResponseStream();
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    // Parsing the response and returning it
+                    return new ApiResponse<UpcomingMoviesData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
+                }
             }
             catch (WebException)
             {
                 // No internet connection
                 throw new Exception("No internet connection.");
-            }
-            using (StreamReader sr = new StreamReader(stream))
-            {
-                // Parsing the response and returning it
-                return new ApiResponse<UpcomingMoviesData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
             }
         }
 
@@ -160,16 +160,20 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
                         apiReq))
                         .GetResponse()
                         .GetResponseStream();
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    // Parsing the response and returning it
+                    return new ApiResponse<ListMoviesData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
+                }
+                //WebClient client = new WebClient();
+                //var response = client.DownloadString(string.Format("https://yts.re/api/v2/list_movies.{0}?{1}", ParseFormat(format),
+                //    apiReq));
+                //return new ApiResponse<ListMoviesData>(JsonConvert.DeserializeObject<ApiResponseRaw>(response));
             }
             catch (WebException)
             {
                 // No internet connection
-                throw new Exception("No internet connection.");
-            }
-            using (StreamReader sr = new StreamReader(stream))
-            {
-                // Parsing the response and returning it
-                return new ApiResponse<ListMoviesData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
+                throw new WebException("No internet connection.");
             }
         }
 
@@ -194,16 +198,16 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
                         apiReq))
                         .GetResponse()
                         .GetResponseStream();
+                using (StreamReader sr = new StreamReader(stream))
+                {
+                    // Parsing the response and returning it
+                    return new ApiResponse<MovieDetailsData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
+                }
             }
             catch (WebException)
             {
                 // No internet connection
                 throw new Exception("No internet connection.");
-            }
-            using (StreamReader sr = new StreamReader(stream))
-            {
-                // Parsing the response and returning it
-                return new ApiResponse<MovieDetailsData>(JsonConvert.DeserializeObject<ApiResponseRaw>(sr.ReadToEnd()));
             }
         }
 

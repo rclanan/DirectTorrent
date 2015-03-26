@@ -11,6 +11,11 @@
                 <mui:Link DisplayName="home" Source="/Views/Home.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
+        <mui:LinkGroup DisplayName="details">
+            <mui:LinkGroup.Links>
+                <mui:Link DisplayName="details" Source="/Views/MovieDetails.xaml"/>
+            </mui:LinkGroup.Links>
+        </mui:LinkGroup>
         <mui:LinkGroup DisplayName="settings" GroupKey="settings">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="software" Source="/Views/SettingsPage.xaml" />

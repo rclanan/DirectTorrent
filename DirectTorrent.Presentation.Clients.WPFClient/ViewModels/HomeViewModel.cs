@@ -5,13 +5,16 @@ using System.ComponentModel;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Threading;
 
 using DirectTorrent.Logic.Models;
@@ -20,12 +23,15 @@ using DirectTorrent.Logic.Services;
 using DirectTorrent.Presentation.Clients.WPFClient.Models;
 using FirstFloor.ModernUI;
 using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows;
+using FirstFloor.ModernUI.Windows.Controls;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
 {
-    public class HomeViewModel : NotifyPropertyChanged
+    public class HomeViewModel : GalaSoft.MvvmLight.ViewModelBase
     {
+        //private IModernNavigationService _modernNavigationService;
         private Visibility _moviesVisibility = Visibility.Collapsed;
         private Visibility _loaderVisibility = Visibility.Visible;
         //private Quality _selectedQuality = Quality.ALL;
@@ -33,11 +39,13 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
         private Order _selectedOrder = Order.Descending;
         //private byte _selectedMinimumRating = 0;
         private string _queryString;
+        private bool _isLoading = false;
 
         private uint _currentPage = 1;
 
         public GalaSoft.MvvmLight.CommandWpf.RelayCommand<ScrollChangedEventArgs> ScrollChangedCommand { get; private set; }
         public GalaSoft.MvvmLight.CommandWpf.RelayCommand TextBoxLostFocus { get; private set; }
+        public GalaSoft.MvvmLight.CommandWpf.RelayCommand<int> MovieClicked { get; private set; }
 
         public ObservableCollection<HomeMovieItem> ListaFilmova { get; private set; }
 
@@ -62,7 +70,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 if (this._selectedSort != value)
                 {
                     this._selectedSort = value;
-                    OnPropertyChanged("SelectedSort");
+                    RaisePropertyChanged("SelectedSort");
                     LoadMovies(true);
                 }
             }
@@ -75,7 +83,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 if (this._selectedOrder != value)
                 {
                     this._selectedOrder = value;
-                    OnPropertyChanged("SelectedOrder");
+                    RaisePropertyChanged("SelectedOrder");
                     LoadMovies(true);
                 }
             }
@@ -101,37 +109,59 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 if (this._queryString != value)
                 {
                     this._queryString = value;
-                    OnPropertyChanged("QueryString");
+                    RaisePropertyChanged("QueryString");
                 }
             }
         }
         public Visibility LoaderVisibility
         {
             get { return this._loaderVisibility; }
-            set
+            private set
             {
                 if (this._loaderVisibility != value)
                 {
                     this._loaderVisibility = value;
-                    OnPropertyChanged("LoaderVisibility");
+                    RaisePropertyChanged("LoaderVisibility");
                 }
             }
         }
         public Visibility MoviesVisibility
         {
             get { return this._moviesVisibility; }
-            set
+            private set
             {
                 if (this._moviesVisibility != value)
                 {
                     this._moviesVisibility = value;
-                    OnPropertyChanged("MoviesVisibility");
+                    RaisePropertyChanged("MoviesVisibility");
+                }
+            }
+        }
+        public bool IsLoading
+        {
+            get { return this._isLoading; }
+            private set
+            {
+                if (this._isLoading != value)
+                {
+                    this._isLoading = value;
+                    RaisePropertyChanged("IsLoading");
                 }
             }
         }
 
-        public HomeViewModel()
+        public HomeViewModel(/*IModernNavigationService modernNavigationService*/)
         {
+            //try
+            //{
+            //    _modernNavigationService = modernNavigationService;
+            //}
+            //catch (Exception e)
+            //{
+
+            //    throw new Exception(e.Message);
+            //}
+
             ListaFilmova = new ObservableCollection<HomeMovieItem>();
             LoadMovies(false);
             this.ScrollChangedCommand = new RelayCommand<ScrollChangedEventArgs>((e) =>
@@ -140,36 +170,59 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                     LoadMovies(false);
             });
             this.TextBoxLostFocus = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(() => LoadMovies(true));
+            this.MovieClicked = new RelayCommand<int>(x =>
+            {
+                Data.MovieId = x;
+                (Application.Current.MainWindow as MainWindow).ContentSource = new Uri("/Views/MovieDetails.xaml", UriKind.Relative);
+                //_modernNavigationService.NavigateTo(ViewModelLocator.MovieDetailsPageKey, x);
+            });
         }
 
         private void LoadMovies(bool reset)
         {
             if (reset)
             {
+                MoviesVisibility = Visibility.Collapsed;
+                LoaderVisibility = Visibility.Visible;
                 ListaFilmova.Clear();
                 _currentPage = 1;
             }
-
-            MoviesVisibility = Visibility.Collapsed;
-            LoaderVisibility = Visibility.Visible;
+            else
+                IsLoading = true;
             BackgroundWorker loader = new BackgroundWorker();
             loader.DoWork += (sender, e) =>
             {
-                var lista = MovieRepository.Yify.ListMovies(page: _currentPage/*, quality: _selectedQuality*/, sortBy: _selectedSort, orderBy: _selectedOrder, queryTerm: _queryString);
-                e.Result = lista;
+                try
+                {
+                    var lista = MovieRepository.Yify.ListMovies(page: _currentPage/*, quality: _selectedQuality*/, sortBy: _selectedSort, orderBy: _selectedOrder, queryTerm: _queryString);
+                    e.Result = lista;
+                }
+                catch (WebException)
+                {
+                    e.Cancel = true; 
+                }
             };
             loader.RunWorkerCompleted += (sender, e) =>
             {
-                Dispatcher.CurrentDispatcher.Invoke(() =>
+                if (!e.Cancelled)
                 {
-                    foreach (var movie in (IEnumerable<Movie>)e.Result)
+                    Dispatcher.CurrentDispatcher.Invoke(() =>
                     {
-                        ListaFilmova.Add(new HomeMovieItem(movie));
-                    }
-                });
-                _currentPage++;
-                LoaderVisibility = Visibility.Collapsed;
-                MoviesVisibility = Visibility.Visible;
+                        foreach (var movie in (IEnumerable<Movie>) e.Result)
+                        {
+                            ListaFilmova.Add(new HomeMovieItem(movie));
+                        }
+                    });
+                    _currentPage++;
+                    IsLoading = false;
+                    LoaderVisibility = Visibility.Collapsed;
+                    MoviesVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    LoaderVisibility = Visibility.Collapsed;
+                    ModernDialog.ShowMessage("No internet connection!" + Environment.NewLine + "Please restart the application with internet access.", "No internet access!", MessageBoxButton.OK);
+                }
             };
             loader.RunWorkerAsync();
         }
