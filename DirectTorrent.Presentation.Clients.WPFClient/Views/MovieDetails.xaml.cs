@@ -61,4 +61,18 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Views
         {
         }
     }
+
+    public class QualityToRadioButtonConverter : IValueConverter
+    {
+        object IValueConverter.Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return value.Equals(parameter);
+        }
+
+        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            //throw new NotImplementedException();
+            return value.Equals(true) ? parameter : Binding.DoNothing;
+        }
+    }
 }

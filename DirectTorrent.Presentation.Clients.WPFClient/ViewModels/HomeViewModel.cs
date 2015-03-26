@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -47,7 +48,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
         public GalaSoft.MvvmLight.CommandWpf.RelayCommand TextBoxLostFocus { get; private set; }
         public GalaSoft.MvvmLight.CommandWpf.RelayCommand<int> MovieClicked { get; private set; }
 
-        public ObservableCollection<HomeMovieItem> ListaFilmova { get; private set; }
+        public ObservableCollection<HomeMovieItem> MovieList { get; private set; }
 
         //public Quality SelectedQuality
         //{
@@ -162,7 +163,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
             //    throw new Exception(e.Message);
             //}
 
-            ListaFilmova = new ObservableCollection<HomeMovieItem>();
+            MovieList = new ObservableCollection<HomeMovieItem>();
             LoadMovies(false);
             this.ScrollChangedCommand = new RelayCommand<ScrollChangedEventArgs>((e) =>
             {
@@ -184,7 +185,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
             {
                 MoviesVisibility = Visibility.Collapsed;
                 LoaderVisibility = Visibility.Visible;
-                ListaFilmova.Clear();
+                MovieList.Clear();
                 _currentPage = 1;
             }
             else
@@ -199,7 +200,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 }
                 catch (WebException)
                 {
-                    e.Cancel = true; 
+                    e.Cancel = true;
                 }
             };
             loader.RunWorkerCompleted += (sender, e) =>
@@ -208,9 +209,13 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 {
                     Dispatcher.CurrentDispatcher.Invoke(() =>
                     {
-                        foreach (var movie in (IEnumerable<Movie>) e.Result)
+                        var movies = (IEnumerable<Movie>)e.Result;
+                        if (movies.Count() > MovieList.Count)
                         {
-                            ListaFilmova.Add(new HomeMovieItem(movie));
+                            foreach (var movie in (IEnumerable<Movie>) e.Result)
+                            {
+                                MovieList.Add(new HomeMovieItem(movie));
+                            }
                         }
                     });
                     _currentPage++;

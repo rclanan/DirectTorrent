@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-
+using System.Windows.Navigation;
 using DirectTorrent.Logic.Models;
 using DirectTorrent.Logic.Services;
 using FirstFloor.ModernUI.Presentation;
@@ -18,6 +18,13 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
 {
     public class MovieDetailsViewModel : ViewModelBase
     {
+        public enum TorrentHealth
+        {
+            Bad,
+            Good,
+            Excellent
+        };
+
         public static int CurrentId { get; private set; }
 
         private BitmapImage _movieImage;
@@ -30,7 +37,10 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
         private double _movieRating;
         private Visibility _loaderVisibility = Visibility.Visible;
         private Visibility _movieVisibility = Visibility.Collapsed;
-        //private health
+        private TorrentHealth _movieHealth;
+        private bool _hasFhd = false;
+        private Quality _selectedQuality = Quality.HD;
+        private Torrent[] torrents = new Torrent[2];
 
         public string MovieTitle
         {
@@ -152,15 +162,53 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 }
             }
         }
-
+        public TorrentHealth MovieHealth
+        {
+            get { return this._movieHealth; }
+            private set
+            {
+                if (this._movieHealth != value)
+                {
+                    this._movieHealth = value;
+                    RaisePropertyChanged("MovieHealth");
+                }
+            }
+        }
         public MovieDetailsViewModel(int movieId)
         {
             LoadMovie(movieId);
         }
-
         public void SetNewMovie(int movieId)
         {
             LoadMovie(movieId);
+        }
+        public bool HasFhd
+        {
+            get { return this._hasFhd; }
+            private set
+            {
+                if (this._hasFhd != value)
+                {
+                    this._hasFhd = value;
+                    RaisePropertyChanged("HasFhd");
+                }
+            }
+        }
+        public Quality SelectedQuality
+        {
+            get { return this._selectedQuality; }
+            private set
+            {
+                if (this._selectedQuality != value)
+                {
+                    if (value == Quality.HD)
+                        SetTorrentHealth(0);
+                    else if (value == Quality.FHD)
+                        SetTorrentHealth(1);
+                    this._selectedQuality = value;
+                    RaisePropertyChanged("SelectedQuality");
+                }
+            }
         }
 
         private void LoadMovie(int movId)
@@ -171,28 +219,58 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
             BackgroundWorker loader = new BackgroundWorker();
             loader.DoWork += (sender, e) =>
             {
-                e.Result = MovieRepository.Yify.GetMovieDetails(movId);
+                try
+                {
+                    e.Result = MovieRepository.Yify.GetMovieDetails(movId);
+                }
+                catch (Exception)
+                {
+                    e.Cancel = true;
+                }
             };
             loader.RunWorkerCompleted += (sender, e) =>
             {
-                var movie = (MovieDetails)e.Result;
-                this.MovieTitle = movie.Title;
-                this.MovieDescription = movie.DescriptionFull;
-                this.MovieYear = movie.Year;
-                this.MovieDuration = movie.Runtime;
-                this.MovieRating = movie.Rating;
-                StringBuilder genres = new StringBuilder();
-                movie.Genres.ForEach(x => genres.Append(x + "/"));
-                var genre = genres.ToString();
-                genre = genre.Remove(genre.Length - 1);
-                this.MovieGenre = genre;
-                this.MovieImage = new BitmapImage(new Uri(movie.Images.LargeCoverImage, UriKind.Absolute));
-                this.ImdbLink = new Uri("http://www.imdb.com/title/" + movie.ImdbCode + "/", UriKind.Absolute);
-                CurrentId = movId;
-                this.LoaderVisibility = Visibility.Collapsed;
-                this.MovieVisibility = Visibility.Visible;
+                if (!e.Cancelled)
+                {
+                    var movie = (MovieDetails)e.Result;
+                    this.MovieTitle = movie.Title;
+                    this.MovieDescription = movie.DescriptionFull;
+                    this.MovieYear = movie.Year;
+                    this.MovieDuration = movie.Runtime;
+                    this.MovieRating = movie.Rating;
+                    StringBuilder genres = new StringBuilder();
+                    movie.Genres.ForEach(x => genres.Append(x + "/"));
+                    var genre = genres.ToString();
+                    genre = genre.Remove(genre.Length - 1);
+                    this.MovieGenre = genre;
+                    this.MovieImage = new BitmapImage(new Uri(movie.Images.LargeCoverImage, UriKind.Absolute));
+                    this.ImdbLink = new Uri("http://www.imdb.com/title/" + movie.ImdbCode + "/", UriKind.Absolute);
+                    movie.Torrents.CopyTo(this.torrents, 0);
+                    if (movie.Torrents.Count > 1)
+                    {
+                        this.HasFhd = true;
+                        this.SelectedQuality = Quality.FHD;
+                        SetTorrentHealth(1);
+                    }
+                    else
+                        SetTorrentHealth(0);
+                    CurrentId = movId;
+                    this.LoaderVisibility = Visibility.Collapsed;
+                    this.MovieVisibility = Visibility.Visible;
+                }
             };
             loader.RunWorkerAsync();
+        }
+
+        private void SetTorrentHealth(int torrentId)
+        {
+            var ratio = this.torrents[torrentId].Seeds / this.torrents[torrentId].Peers;
+            if (ratio < 1)
+                this.MovieHealth = TorrentHealth.Bad;
+            else if (ratio >= 1 && ratio <= 1.5)
+                this.MovieHealth = TorrentHealth.Good;
+            else if (ratio > 1.5)
+                this.MovieHealth = TorrentHealth.Excellent;
         }
     }
 }

@@ -105,7 +105,7 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
             try
             {
                 stream =
-                    WebRequest.Create(string.Format("https://yts.re/api/v2/list_upcoming.{0}", ParseFormat(format)))
+                    WebRequest.Create(string.Format("https://yts.to/api/v2/list_upcoming.{0}", ParseFormat(format)))
                         .GetResponse()
                         .GetResponseStream();
                 using (StreamReader sr = new StreamReader(stream))
@@ -156,7 +156,7 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
             try
             {
                 stream =
-                    WebRequest.Create(string.Format("https://yts.re/api/v2/list_movies.{0}?{1}", ParseFormat(format),
+                    WebRequest.Create(string.Format("https://yts.to/api/v2/list_movies.{0}?{1}", ParseFormat(format),
                         apiReq))
                         .GetResponse()
                         .GetResponseStream();
@@ -194,7 +194,7 @@ namespace DirectTorrent.Data.Yify.ApiWrapper
             try
             {
                 stream =
-                    WebRequest.Create(string.Format("https://yts.re/api/v2/movie_details.{0}?{1}", ParseFormat(format),
+                    WebRequest.Create(string.Format("https://yts.to/api/v2/movie_details.{0}?{1}", ParseFormat(format),
                         apiReq))
                         .GetResponse()
                         .GetResponseStream();
