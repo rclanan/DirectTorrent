@@ -29,10 +29,7 @@ namespace DirectTorrent.Logic.Models
         Title,
         Year,
         Rating,
-        Peers,
-        Seeds,
         DownloadCount,
-        LikeCount,
         DateAdded
     }
 

@@ -146,14 +146,8 @@ namespace DirectTorrent.Logic.Services
                         return Data.Yify.Models.Sort.Year;
                     case Logic.Models.Sort.Rating:
                         return Data.Yify.Models.Sort.Rating;
-                    case Logic.Models.Sort.Peers:
-                        return Data.Yify.Models.Sort.Peers;
-                    case Logic.Models.Sort.Seeds:
-                        return Data.Yify.Models.Sort.Seeds;
                     case Logic.Models.Sort.DownloadCount:
                         return Data.Yify.Models.Sort.DownloadCount;
-                    case Logic.Models.Sort.LikeCount:
-                        return Data.Yify.Models.Sort.LikeCount;
                     case Logic.Models.Sort.DateAdded:
                         return Data.Yify.Models.Sort.DateAdded;
                 }
