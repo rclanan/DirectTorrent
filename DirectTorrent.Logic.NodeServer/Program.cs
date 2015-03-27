@@ -19,18 +19,25 @@ namespace DirectTorrent.Logic.NodeServer
         [STAThread]
         static void Main(string[] args)
         {
+            string server = string.Empty;
             try
             {
                 var _assembly = Assembly.GetExecutingAssembly();
-                var _textStreamReader = new StreamReader(_assembly.GetManifestResourceStream("DirectTorrent.Logic.NodeServer.server.js"));
-                File.WriteAllText("test", _textStreamReader.ReadToEnd());
+                using (var sr = new StreamReader(_assembly.GetManifestResourceStream("DirectTorrent.Logic.NodeServer.server.js")))
+                {
+                    server = sr.ReadToEnd();
+                }
+                //File.WriteAllText("test", _textStreamReader.ReadToEnd());
                 //RADI!
             }
             catch
             {
-                MessageBox.Show("Error accessing server resource!");
+                throw new Exception("Error accessing server resource!");
             }
 
+            server = server.Replace("MATIJACUPIC", args[0]);
+            //File.WriteAllText("test.txt",server);
+            var a = Start(server).Result;
             //string server = File.ReadAllText("test2.js");
             //server = server.Replace("MATIJACUPIC", args[0]);
             // Runs the start method synchronously 

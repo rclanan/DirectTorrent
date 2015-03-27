@@ -51,6 +51,6 @@ return function(data, cb){
 				res.writeHead(200, { 'Content-Length': total, 'Content-Type': 'video/mp4' });
 				file.createReadStream().pipe(res);
 			}}).listen(1337);
-			fs.writeFile('test.txt', 'Torrent info hash:' + torrent.infoHash);
+			fs.writeFile('hash.txt', 'Torrent info hash:' + torrent.infoHash);
 });
 };

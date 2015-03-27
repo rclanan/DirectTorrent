@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DirectTorrent.Logic.Services;
 
 
 namespace DirectTorrent.Presentation.Clients.WPFClient
@@ -24,6 +25,11 @@ namespace DirectTorrent.Presentation.Clients.WPFClient
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ModernWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            NodeServerManager.CloseServer();
         }
     }
 }

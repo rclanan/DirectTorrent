@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+
 using DirectTorrent.Logic.Models;
 using DirectTorrent.Logic.Services;
+using DirectTorrent.Presentation.Clients.WPFClient.Views;
 using FirstFloor.ModernUI.Presentation;
+using FirstFloor.ModernUI.Windows.Controls;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.CommandWpf;
+using MovieDetails = DirectTorrent.Logic.Models.MovieDetails;
 
 namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
 {
+
     public class MovieDetailsViewModel : ViewModelBase
     {
         public enum TorrentHealth
@@ -23,6 +31,13 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
             Bad,
             Good,
             Excellent
+        };
+
+        public enum ReproductionMethod
+        {
+            WMP,
+            Browser,
+            Local
         };
 
         public static int CurrentId { get; private set; }
@@ -41,6 +56,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
         private bool _hasFhd = false;
         private Quality _selectedQuality = Quality.HD;
         private Torrent[] torrents = new Torrent[2];
+
+        public GalaSoft.MvvmLight.CommandWpf.RelayCommand PlayButtonClicked { get; private set; }
 
         public string MovieTitle
         {
@@ -174,10 +191,6 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                 }
             }
         }
-        public MovieDetailsViewModel(int movieId)
-        {
-            LoadMovie(movieId);
-        }
         public void SetNewMovie(int movieId)
         {
             LoadMovie(movieId);
@@ -209,6 +222,27 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
                     RaisePropertyChanged("SelectedQuality");
                 }
             }
+        }
+
+        public MovieDetailsViewModel(int movieId)
+        {
+            this.PlayButtonClicked = new GalaSoft.MvvmLight.CommandWpf.RelayCommand(() =>
+            {
+                string magnetUri = String.Empty;
+                switch (SelectedQuality)
+                {
+                    case Quality.HD:
+                        magnetUri = MovieRepository.GetTorrentMagnetUri(this.torrents[0].Hash, this.MovieTitle);
+                        break;
+                    case Quality.FHD:
+                        magnetUri = MovieRepository.GetTorrentMagnetUri(this.torrents[1].Hash, this.MovieTitle);
+                        break;
+                }
+                var wind = new MovieVideo(magnetUri);
+                wind.ShowDialog();
+
+            });
+            LoadMovie(movieId);
         }
 
         private void LoadMovie(int movId)
@@ -264,7 +298,15 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.ViewModels
 
         private void SetTorrentHealth(int torrentId)
         {
-            var ratio = this.torrents[torrentId].Seeds / this.torrents[torrentId].Peers;
+            double ratio = 0;
+            try
+            {
+                ratio = this.torrents[torrentId].Seeds / this.torrents[torrentId].Peers;
+            }
+            catch
+            {
+
+            }
             if (ratio < 1)
                 this.MovieHealth = TorrentHealth.Bad;
             else if (ratio >= 1 && ratio <= 1.5)

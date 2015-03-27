@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mui="http://firstfloorsoftware.com/ModernUI"
         Title="DirectTorrent - Real Time Torrent Content Streaming" IsTitleVisible="True" ContentSource="/Views/Home.xaml" WindowStartupLocation="CenterScreen" Width="885"
-        LogoData="F1M50.4479,17.7813C52.152,17.3879,53.8523,18.4503,54.2457,20.1544L56.0266,27.8682 18.9996,36.4165 17.2188,28.7028C16.8254,26.9987,17.8879,25.2983,19.5919,24.9049L50.4479,17.7813z M19.4743,31.432L20.1866,34.5176 26.1195,25.0229 23.034,25.7353 19.4743,31.432z M24.8149,33.449L27.9004,32.7367 33.8333,23.242 30.7478,23.9544 24.8149,33.449z M32.5287,31.6682L35.6142,30.9558 41.5471,21.4612 38.4616,22.1735 32.5287,31.6682z M40.2425,29.8873L43.328,29.1749 49.2609,19.6803 46.1754,20.3926 40.2425,29.8873z M47.9562,28.1064L51.0417,27.3941 53.4149,23.5962 52.7026,20.5107 47.9562,28.1064z M53.8338,57L22.1663,57C20.4173,57,18.9996,55.5822,18.9996,53.8333L18.9996,36.4167 57,36.4167 57.0004,53.8333C57.0004,55.5822,55.5827,57,53.8338,57z M30.0833,38L23.75,44.3333 26.9167,44.3333 33.25,38 30.0833,38z M38,38L31.6667,44.3333 34.8333,44.3333 41.1666,38 38,38z M45.9167,38L39.5833,44.3333 42.75,44.3333 49.0833,38 45.9167,38z M53.8333,38L47.5,44.3333 50.6666,44.3333 55.408,39.592 55.4167,38 53.8333,38z M22.1667,38L20.5833,39.5833 20.5833,42.75 25.3333,38 22.1667,38z" >
+        LogoData="F1M50.4479,17.7813C52.152,17.3879,53.8523,18.4503,54.2457,20.1544L56.0266,27.8682 18.9996,36.4165 17.2188,28.7028C16.8254,26.9987,17.8879,25.2983,19.5919,24.9049L50.4479,17.7813z M19.4743,31.432L20.1866,34.5176 26.1195,25.0229 23.034,25.7353 19.4743,31.432z M24.8149,33.449L27.9004,32.7367 33.8333,23.242 30.7478,23.9544 24.8149,33.449z M32.5287,31.6682L35.6142,30.9558 41.5471,21.4612 38.4616,22.1735 32.5287,31.6682z M40.2425,29.8873L43.328,29.1749 49.2609,19.6803 46.1754,20.3926 40.2425,29.8873z M47.9562,28.1064L51.0417,27.3941 53.4149,23.5962 52.7026,20.5107 47.9562,28.1064z M53.8338,57L22.1663,57C20.4173,57,18.9996,55.5822,18.9996,53.8333L18.9996,36.4167 57,36.4167 57.0004,53.8333C57.0004,55.5822,55.5827,57,53.8338,57z M30.0833,38L23.75,44.3333 26.9167,44.3333 33.25,38 30.0833,38z M38,38L31.6667,44.3333 34.8333,44.3333 41.1666,38 38,38z M45.9167,38L39.5833,44.3333 42.75,44.3333 49.0833,38 45.9167,38z M53.8333,38L47.5,44.3333 50.6666,44.3333 55.408,39.592 55.4167,38 53.8333,38z M22.1667,38L20.5833,39.5833 20.5833,42.75 25.3333,38 22.1667,38z" 
+        Icon="pack://application:,,,/Resources/appbar.movie.clapper.png" Closing="ModernWindow_Closing">
 
     <mui:ModernWindow.MenuLinkGroups>
         <mui:LinkGroup DisplayName="welcome">
@@ -11,7 +12,7 @@
                 <mui:Link DisplayName="home" Source="/Views/Home.xaml" />
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
-        <mui:LinkGroup DisplayName="details">
+        <mui:LinkGroup DisplayName="movie">
             <mui:LinkGroup.Links>
                 <mui:Link DisplayName="details" Source="/Views/MovieDetails.xaml"/>
             </mui:LinkGroup.Links>
@@ -22,9 +23,9 @@
             </mui:LinkGroup.Links>
         </mui:LinkGroup>
     </mui:ModernWindow.MenuLinkGroups>
-    
+
     <mui:ModernWindow.TitleLinks>
         <mui:Link DisplayName="settings" Source="/Views/SettingsPage.xaml" />
-        <mui:Link DisplayName="help" Source="http://img.picturequotes.com/2/2/1212/nobody-can-bring-you-peace-but-yourself-quote-1.jpg" />
+        <mui:Link DisplayName="help" Source="http://bobandjay.com/wp/wp-content/uploads/2014/06/no-help.jpg" />
     </mui:ModernWindow.TitleLinks>
 </mui:ModernWindow>
