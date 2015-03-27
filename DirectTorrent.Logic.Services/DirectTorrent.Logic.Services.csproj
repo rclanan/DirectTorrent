@@ -74,7 +74,7 @@
       <Project>{cf058cc9-4a20-4cbc-a25f-48b01e79d828}</Project>
       <Name>DirectTorrent.Data.Yify.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DirectTorrent.Logic.Model\DirectTorrent.Logic.Models.csproj">
+    <ProjectReference Include="..\DirectTorrent.Logic.Models\DirectTorrent.Logic.Models.csproj">
       <Project>{a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71}</Project>
       <Name>DirectTorrent.Logic.Models</Name>
     </ProjectReference>
