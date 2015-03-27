@@ -8,9 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1C94DE42-5314-4878-BEA4-4E155AC0497E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5F000477-FF77-45EB-A750-C4CE237E6AEC}"
-	ProjectSection(SolutionItems) = preProject
-		DirectTorrent.Presentation.CodeMap.dgml = DirectTorrent.Presentation.CodeMap.dgml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38F84A3E-8A29-47AD-8865-B19D2B4B2EA6}"
 	ProjectSection(SolutionItems) = preProject

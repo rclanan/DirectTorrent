@@ -1,61 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <DirectedGraph DataVirtualized="True" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="@10" Category="CodeSchema_Assembly" Bounds="134.268037999374,173.95631407707,236.403333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Data.Yify.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPath)" Group="Collapsed" Label="DirectTorrent.Data.Yify.Models.dll" />
-    <Node Id="@12" Category="CodeSchema_Namespace" Bounds="274.532632578972,132.396241531265,242.52,25" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="4" Group="Collapsed" Label="DirectTorrent‎.Data‎.Yify‎.ApiWrapper" UseManualLocation="True" />
-    <Node Id="@13" Category="CodeSchema_Namespace" Bounds="148.447881518123,60.7579823287298,202.963333333333,25.0019200064" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" Group="Collapsed" Label="DirectTorrent‎.Logic‎.Services" UseManualLocation="True" />
-    <Node Id="@14" Category="CodeSchema_Class" Bounds="388.09957765881,135.883886844229,152.196666666667,25" CodeSchemaProperty_IsGeneric="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ApiResponse‎&lt;T‎&gt;" UseManualLocation="True" />
-    <Node Id="@15" Category="CodeSchema_Class" Bounds="281.47457765881,190.883886844229,151.446666666667,25" CodeSchemaProperty_IsInternal="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ApiResponseRaw" UseManualLocation="True" />
-    <Node Id="@16" Category="CodeSchema_Class" Bounds="294.82457765881,80.8838868442293,124.746666666667,25" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="ApiWrapper" UseManualLocation="True" />
-    <Node Id="@17" Category="CodeSchema_Class" Bounds="420.08457765881,245.883886844229,88.2266666666667,25" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="Meta" UseManualLocation="True" />
-    <Node Id="@18" Category="CodeSchema_Class" Bounds="174.45850068886,52.2431935286846,150.35,25" CodeSchemaProperty_IsAbstract="True" CodeSchemaProperty_IsFinal="True" CodeSchemaProperty_IsPublic="True" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" Group="Collapsed" Label="MovieRepository" UseManualLocation="True" />
-    <Node Id="@2" Category="CodeSchema_Assembly" Bounds="92.5278285172537,-36.1666796796595,314.57,25" CodeSchemaProperty_StrongName="DirectTorrent.Presentation.Clients.WPFClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(abcef1cd-472b-4523-b057-adc463a871cf.OutputPath)" Group="Collapsed" Label="DirectTorrent.Presentation.Clients.WPFClient.exe" />
-    <Node Id="@4" Category="CodeSchema_Assembly" Bounds="259.556113961167,118.95583407467,261.00017216,25.0004800016" CodeSchemaProperty_StrongName="DirectTorrent.Data.Yify.ApiWrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" FilePath="$(8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPath)" Group="Collapsed" Label="DirectTorrent.Data.Yify.ApiWrapper.dll" UseManualLocation="True" />
-    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="144.0702323293,63.9481538025091,221.446087893333,25.0076802713608" CodeSchemaProperty_StrongName="DirectTorrent.Logic.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="Fetched" DelayedCrossGroupLinksState="Fetched" FetchedChildrenCount="1" FilePath="$(c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPath)" Group="Collapsed" Label="DirectTorrent.Logic.Services.dll" UseManualLocation="True" />
-    <Node Id="@8" Category="CodeSchema_Assembly" Bounds="11.3062632885238,118.979818059362,218.203333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Logic.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPath)" Group="Collapsed" Label="DirectTorrent.Logic.Models.dll" />
+    <Node Id="(@1)" Category="CodeSchema_Assembly" Bounds="0,220,246.603333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Logic.NodeServer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(5b7716ab-0cb5-4e43-bb66-69d8074560a4.OutputPath)" Group="Collapsed" Label="DirectTorrent.Logic.NodeServer.exe" />
+    <Node Id="(@4)" Category="CodeSchema_Assembly" Bounds="276.603333333333,220,259.106666666667,25" CodeSchemaProperty_StrongName="DirectTorrent.Presentation.AxWMP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(d558496f-bd6b-4cd8-9a8f-7b25bd309260.OutputPath)" Group="Collapsed" Label="DirectTorrent.Presentation.AxWMP.dll" />
+    <Node Id="@10" Category="CodeSchema_Assembly" Bounds="441.1,110,218.203333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Logic.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPath)" Group="Collapsed" Label="DirectTorrent.Logic.Models.dll" />
+    <Node Id="@12" Category="CodeSchema_Assembly" Bounds="-1.4210854715202E-14,165,236.403333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Data.Yify.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPath)" Group="Collapsed" Label="DirectTorrent.Data.Yify.Models.dll" />
+    <Node Id="@3" Category="CodeSchema_Assembly" Bounds="392.916666666667,0,314.57,25" CodeSchemaProperty_StrongName="DirectTorrent.Presentation.Clients.WPFClient, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(8aca8ef5-f4ab-4b93-960a-7ac06407d29c.OutputPath)" Group="Collapsed" Label="DirectTorrent.Presentation.Clients.WPFClient.exe" />
+    <Node Id="@6" Category="CodeSchema_Assembly" Bounds="149.701666666667,110,261,25" CodeSchemaProperty_StrongName="DirectTorrent.Data.Yify.ApiWrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPath)" Group="Collapsed" Label="DirectTorrent.Data.Yify.ApiWrapper.dll" />
+    <Node Id="@8" Category="CodeSchema_Assembly" Bounds="169.48,55,221.443333333333,25" CodeSchemaProperty_StrongName="DirectTorrent.Logic.Services, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DelayedChildNodesState="NotFetched" DelayedCrossGroupLinksState="Fetched" FilePath="$(c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPath)" Group="Collapsed" Label="DirectTorrent.Logic.Services.dll" />
   </Nodes>
   <Links>
-    <Link Source="@12" Target="@14" Category="Contains" FetchingParent="@12" />
-    <Link Source="@12" Target="@15" Category="Contains" FetchingParent="@12" />
-    <Link Source="@12" Target="@16" Category="Contains" FetchingParent="@12" />
-    <Link Source="@12" Target="@17" Category="Contains" FetchingParent="@12" />
-    <Link Source="@13" Target="@18" Category="Contains" FetchingParent="@13" />
-    <Link Source="@14" Target="@15" Category="References" Bounds="389.520538330078,160.883880615234,50.3591918945313,25.8855590820313" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="5">
-      <Category Ref="CodeSchema_Calls" />
-    </Link>
-    <Link Source="@14" Target="@17" Category="References" Bounds="464.197906494141,160.883880615234,0,76" IsSourceVirtualized="True" Weight="4">
-      <Category Ref="CodeSchema_ReturnTypeLink" />
-    </Link>
-    <Link Source="@15" Target="@17" Category="References" Bounds="381.516082763672,215.883880615234,50.3591918945313,25.8855590820313" IsSourceVirtualized="True" Weight="4">
-      <Category Ref="CodeSchema_ReturnTypeLink" />
-    </Link>
-    <Link Source="@16" Target="@10" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="18" />
-    <Link Source="@16" Target="@14" Category="CodeSchema_Calls" Bounds="381.516082763672,105.883888244629,50.3591918945313,25.8855514526367" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="8">
-      <Category Ref="CodeSchema_ReturnTypeLink" />
-    </Link>
-    <Link Source="@16" Target="@15" Category="References" Bounds="357.197906494141,105.883888244629,0,75.9999923706055" IsSourceVirtualized="True" Weight="4" />
-    <Link Source="@18" Target="@10" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="13">
-      <Category Ref="CodeSchema_Calls" />
-    </Link>
-    <Link Source="@18" Target="@14" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="3" />
-    <Link Source="@18" Target="@16" Category="CodeSchema_Calls" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="3" />
-    <Link Source="@18" Target="@8" Category="References" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="8">
+    <Link Source="@10" Target="@12" Category="References" Bounds="225.311416625977,135,226.708419799805,28.8633422851563" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="11" />
+    <Link Source="@3" Target="@10" Category="References" Bounds="550.20166015625,25,0,76" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="39">
       <Category Ref="CodeSchema_Calls" />
       <Category Ref="CodeSchema_ReturnTypeLink" />
     </Link>
-    <Link Source="@2" Target="@18" Category="CodeSchema_Calls" Bounds="249.250081065776,-63.9761990960914,0.319377162819762,107.219432552112" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="1" />
-    <Link Source="@4" Target="@12" Category="Contains" FetchingParent="@4" />
-    <Link Source="@6" Target="@13" Category="Contains" FetchingParent="@6" />
-    <Link Source="@8" Target="@10" Category="References" Bounds="150.457868295198,143.95604655391,63.7005190721916,26.5388037267329" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="3" />
+    <Link Source="@3" Target="@8" Category="CodeSchema_Calls" Bounds="350.384185791016,25,138.453857421875,28.2035598754883" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="7" />
+    <Link Source="@6" Target="@12" Category="References" Bounds="163.542083740234,135,79.8414001464844,27.1066436767578" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="18" />
+    <Link Source="@8" Target="@10" Category="References" Bounds="341.565307617188,80,138.453826904297,28.2035598754883" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="18">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@8" Target="@12" Category="References" Bounds="118.201667785645,80,119.598808288574,76" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="18">
+      <Category Ref="CodeSchema_Calls" />
+      <Category Ref="CodeSchema_ReturnTypeLink" />
+    </Link>
+    <Link Source="@8" Target="@6" Category="CodeSchema_Calls" Bounds="280.20166015625,80,0,21" IsSourceVirtualized="True" IsTargetVirtualized="True" Weight="8" />
   </Links>
   <Categories>
     <Category Id="CodeSchema_Assembly" Label="Assembly" BasedOn="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="CodeSchema_Assembly" NavigationActionLabel="Assemblies" />
     <Category Id="CodeSchema_Calls" Label="Calls" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Called By" OutgoingActionLabel="Calls" />
-    <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Classes" />
-    <Category Id="CodeSchema_Namespace" Label="Namespace" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Type" Icon="CodeSchema_Namespace" NavigationActionLabel="Namespaces" />
     <Category Id="CodeSchema_ReturnTypeLink" Label="Return" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Return types" OutgoingActionLabel="Return types" />
-    <Category Id="CodeSchema_Type" Label="Type" CanBeDataDriven="True" DefaultAction="Node:Both:CodeSchema_Member" Icon="CodeSchema_Class" NavigationActionLabel="Types" />
-    <Category Id="Contains" Label="Contains" Description="Whether the source of the link contains the target object" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
     <Category Id="File" Label="File" CanBeDataDriven="True" DefaultAction="Microsoft.Contains" Icon="File" NavigationActionLabel="Files" />
     <Category Id="References" Label="References" CanBeDataDriven="True" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
   </Categories>
@@ -63,25 +38,17 @@
     <Property Id="Bounds" DataType="System.Windows.Rect" />
     <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
     <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsAbstract" Label="Is Abstract" Description="Flag to indicate member is 'Abstract' does not provide a full implementation" DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsFinal" Label="Is Final" Description="Flag to indicate the member is 'Final' and cannot be derived from" DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsGeneric" Label="Is Generic" Description="Flag to indicate the member is 'Generic'" DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsInternal" Label="Is Internal" Description="Flag to indicate the method is 'Internal'" DataType="System.Boolean" />
-    <Property Id="CodeSchemaProperty_IsPublic" Label="Is Public" Description="Flag to indicate the scope is Public" DataType="System.Boolean" />
     <Property Id="CodeSchemaProperty_StrongName" Label="StrongName" Description="StrongName" DataType="System.String" />
     <Property Id="DataVirtualized" Label="Data Virtualized" Description="If true, the graph can contain nodes and links that represent data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="DefaultAction" Label="DefaultAction" Description="DefaultAction" DataType="System.String" />
     <Property Id="DelayedChildNodesState" Label="Delayed Child Nodes State" Description="Unspecified if the delayed child nodes state is not specified. NotFetched if the group contains child nodes that are not fetched into the graph yet. Fetched if the group has all its delayed child nodes already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
     <Property Id="DelayedCrossGroupLinksState" Label="Delayed Cross-Group Links State" Description="Unspecified if the delayed cross-group links state is not specified. NotFetched if delayed cross-group links on this node are not fetched into the graph yet. Fetched if all delayed cross-group links have already fetched." DataType="Microsoft.VisualStudio.GraphModel.DelayedDataState" />
     <Property Id="Expression" DataType="System.String" />
-    <Property Id="FetchedChildrenCount" DataType="System.Int32" />
-    <Property Id="FetchingParent" DataType="Microsoft.VisualStudio.GraphModel.GraphNodeId" />
     <Property Id="FilePath" Label="File Path" Description="File Path" DataType="System.String" />
     <Property Id="Group" Label="Group" Description="Display the node as a group" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
     <Property Id="GroupLabel" DataType="System.String" />
     <Property Id="Icon" Label="Icon" Description="Icon" DataType="System.String" />
     <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
-    <Property Id="IsContainment" DataType="System.Boolean" />
     <Property Id="IsEnabled" DataType="System.Boolean" />
     <Property Id="IsSourceVirtualized" Label="Link Source Virtualized" Description="If true, the link source end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
     <Property Id="IsTargetVirtualized" Label="Link Target Virtualized" Description="If true, the link target end contains data for virtualized nodes/links (i.e. not actually created in the graph)." DataType="System.Boolean" />
@@ -90,7 +57,6 @@
     <Property Id="NavigationActionLabel" Label="NavigationActionLabel" Description="NavigationActionLabel" DataType="System.String" />
     <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
     <Property Id="TargetType" DataType="System.Type" />
-    <Property Id="UseManualLocation" DataType="System.Boolean" />
     <Property Id="Value" DataType="System.String" />
     <Property Id="ValueLabel" DataType="System.String" />
     <Property Id="Visibility" Label="Visibility" Description="Defines whether a node in the graph is visible or not" DataType="System.Windows.Visibility" />
@@ -99,30 +65,20 @@
   </Properties>
   <QualifiedNames>
     <Name Id="Assembly" Label="Assembly" ValueType="Uri" />
-    <Name Id="GenericParameterCount" Label="Generic Parameter Count" ValueType="System.String" />
-    <Name Id="Name" Label="Name" ValueType="System.String" />
-    <Name Id="Namespace" Label="Namespace" ValueType="System.String" />
-    <Name Id="Type" Label="Type" ValueType="System.Object" />
   </QualifiedNames>
   <IdentifierAliases>
-    <Alias n="1" Uri="Assembly=$(abcef1cd-472b-4523-b057-adc463a871cf.OutputPathUri)" />
-    <Alias n="2" Id="(@1)" />
-    <Alias n="3" Uri="Assembly=$(8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPathUri)" />
-    <Alias n="4" Id="(@3)" />
-    <Alias n="5" Uri="Assembly=$(c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPathUri)" />
+    <Alias n="1" Uri="Assembly=$(5b7716ab-0cb5-4e43-bb66-69d8074560a4.OutputPathUri)" />
+    <Alias n="2" Uri="Assembly=$(8aca8ef5-f4ab-4b93-960a-7ac06407d29c.OutputPathUri)" />
+    <Alias n="3" Id="(@2)" />
+    <Alias n="4" Uri="Assembly=$(d558496f-bd6b-4cd8-9a8f-7b25bd309260.OutputPathUri)" />
+    <Alias n="5" Uri="Assembly=$(8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPathUri)" />
     <Alias n="6" Id="(@5)" />
-    <Alias n="7" Uri="Assembly=$(a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPathUri)" />
+    <Alias n="7" Uri="Assembly=$(c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPathUri)" />
     <Alias n="8" Id="(@7)" />
-    <Alias n="9" Uri="Assembly=$(cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPathUri)" />
+    <Alias n="9" Uri="Assembly=$(a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPathUri)" />
     <Alias n="10" Id="(@9)" />
-    <Alias n="11" Id="Namespace=DirectTorrent.Data.Yify.ApiWrapper" />
-    <Alias n="12" Id="(@3 @11)" />
-    <Alias n="13" Id="(@5 Namespace=DirectTorrent.Logic.Services)" />
-    <Alias n="14" Id="(@3 @11 Type=(Name=ApiResponse GenericParameterCount=1))" />
-    <Alias n="15" Id="(@3 @11 Type=ApiResponseRaw)" />
-    <Alias n="16" Id="(@3 @11 Type=ApiWrapper)" />
-    <Alias n="17" Id="(@3 @11 Type=Meta)" />
-    <Alias n="18" Id="(@5 Namespace=DirectTorrent.Logic.Services Type=MovieRepository)" />
+    <Alias n="11" Uri="Assembly=$(cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPathUri)" />
+    <Alias n="12" Id="(@11)" />
   </IdentifierAliases>
   <Styles>
     <Style TargetType="Node" GroupLabel="Results" ValueLabel="True">
@@ -281,15 +237,19 @@
     </Style>
   </Styles>
   <Paths>
+    <Path Id="5b7716ab-0cb5-4e43-bb66-69d8074560a4.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Logic.NodeServer\bin\Debug\DirectTorrent.Logic.NodeServer.exe" />
+    <Path Id="5b7716ab-0cb5-4e43-bb66-69d8074560a4.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Logic.NodeServer/bin/Debug/DirectTorrent.Logic.NodeServer.exe" />
+    <Path Id="8aca8ef5-f4ab-4b93-960a-7ac06407d29c.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Presentation.Clients.WPFClient\bin\Debug\DirectTorrent.Presentation.Clients.WPFClient.exe" />
+    <Path Id="8aca8ef5-f4ab-4b93-960a-7ac06407d29c.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Presentation.Clients.WPFClient/bin/Debug/DirectTorrent.Presentation.Clients.WPFClient.exe" />
     <Path Id="8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Data.Yify.ApiWrapper\bin\Debug\DirectTorrent.Data.Yify.ApiWrapper.dll" />
     <Path Id="8ccf7c6e-42cb-4646-a22b-0c5e42d11e17.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Data.Yify.ApiWrapper/bin/Debug/DirectTorrent.Data.Yify.ApiWrapper.dll" />
     <Path Id="a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Logic.Model\bin\Debug\DirectTorrent.Logic.Models.dll" />
     <Path Id="a4b7f9d9-ca54-4ba0-aefb-f82bdb371f71.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Logic.Model/bin/Debug/DirectTorrent.Logic.Models.dll" />
-    <Path Id="abcef1cd-472b-4523-b057-adc463a871cf.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Presentation.Clients.WPFClient\bin\Debug\DirectTorrent.Presentation.Clients.WPFClient.exe" />
-    <Path Id="abcef1cd-472b-4523-b057-adc463a871cf.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Presentation.Clients.WPFClient/bin/Debug/DirectTorrent.Presentation.Clients.WPFClient.exe" />
     <Path Id="c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Logic.Services\bin\Debug\DirectTorrent.Logic.Services.dll" />
     <Path Id="c0739fbc-758b-4a58-8d95-60e002dafd0c.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Logic.Services/bin/Debug/DirectTorrent.Logic.Services.dll" />
     <Path Id="cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPath" Value="C:\Users\Rex\Documents\Visual Studio 2013\Projects\DirectTorrent\DirectTorrent.Data.Yify.Models\bin\Debug\DirectTorrent.Data.Yify.Models.dll" />
     <Path Id="cf058cc9-4a20-4cbc-a25f-48b01e79d828.OutputPathUri" Value="file:///C:/Users/Rex/Documents/Visual Studio 2013/Projects/DirectTorrent/DirectTorrent.Data.Yify.Models/bin/Debug/DirectTorrent.Data.Yify.Models.dll" />
+    <Path Id="d558496f-bd6b-4cd8-9a8f-7b25bd309260.OutputPath" Value="C:\Clients\DirectTorrent.Presentation.Clients.WPFClient\bin\Debug\DirectTorrent.Presentation.AxWMP.dll" />
+    <Path Id="d558496f-bd6b-4cd8-9a8f-7b25bd309260.OutputPathUri" Value="file:///C:/Clients/DirectTorrent.Presentation.Clients.WPFClient/bin/Debug/DirectTorrent.Presentation.AxWMP.dll" />
   </Paths>
 </DirectedGraph>
