@@ -12,7 +12,7 @@ Version
 Usage
 --------------
 
-To use the application you must first install the `webtorrent` module in the output directory.
+To use the application you must first install the `webtorrent` node module in the output directory.
 
 Participation
 --------------
