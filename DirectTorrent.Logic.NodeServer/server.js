@@ -14,7 +14,7 @@
 var http = require('http');
 var fs = require('fs');
 var  util = require('util');
-var WebTorrent = require('webtorrent')
+var WebTorrent = require('webtorrent');
 
 return function(data, cb){
 	var client = new WebTorrent();

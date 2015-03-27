@@ -36,6 +36,8 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Views
             //Host.Child = player;
             if (magnetUri != string.Empty)
             {
+                if (File.Exists("hash.txt"))
+                    File.Delete("hash.txt");
                 NodeServerManager.StartServer(magnetUri);
                 BackgroundWorker worker = new BackgroundWorker();
                 worker.DoWork += (sender, e) =>
@@ -48,6 +50,7 @@ namespace DirectTorrent.Presentation.Clients.WPFClient.Views
                 };
                 worker.RunWorkerCompleted += (sender, e) =>
                 {
+                    File.Delete("hash.txt");
                     //this.Player.closedCaption.SAMIFileName=
                     this.Player.URL = "http://localhost:1337";
                 };
