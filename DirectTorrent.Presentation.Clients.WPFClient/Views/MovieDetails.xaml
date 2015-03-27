@@ -1,0 +1,42 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mui="http://firstfloorsoftware.com/ModernUI"
+             xmlns:enum="clr-namespace:DirectTorrent.Logic.Models;assembly=DirectTorrent.Logic.Models" xmlns:local="clr-namespace:DirectTorrent.Presentation.Clients.WPFClient.Views"
+    x:Class="DirectTorrent.Presentation.Clients.WPFClient.Views.MovieDetails"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <local:QualityToRadioButtonConverter x:Key="QualityToRadioButtonConverter"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding LoaderVisibility}">
+            <TextBlock Text="Loading..." Margin="0,0,0,10"/>
+            <mui:ModernProgressRing IsActive="True"/>
+        </StackPanel>
+        <Image Grid.Column="0" Source="{Binding MovieImage}" Margin="0,0,25,0" Visibility="{Binding MovieVisibility}"/>
+        <StackPanel Grid.Column="1" Visibility="{Binding MovieVisibility}" Orientation="Vertical" HorizontalAlignment="Center" >
+            <TextBlock Text="{Binding MovieTitle}" FontWeight="UltraBold" HorizontalAlignment="Center" FontSize="24"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding MovieYear, StringFormat=\{0\} *}" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding MovieDuration, StringFormat=\{0\} *}" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding MovieGenre, StringFormat=\{0\} *}" Margin="0,0,5,0"/>
+                <mui:BBCodeBlock BBCode="{Binding ImdbLink, StringFormat=[url\=\{0\}]Imdb Link[/url] *}" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding MovieRating, StringFormat=\{0\} *}" Margin="0,0,5,0"/>
+                <TextBlock Text="{Binding MovieHealth}"/>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Grid.Column="1" Text="{Binding MovieDescription}" TextWrapping="Wrap" VerticalAlignment="Center" Visibility="{Binding MovieVisibility}"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,25" Visibility="{Binding MovieVisibility}">
+            <RadioButton GroupName="MovieQuality" Content="720p" IsChecked="{Binding SelectedQuality, Converter={StaticResource QualityToRadioButtonConverter}, ConverterParameter={x:Static enum:Quality.HD}}" Margin="0,0,10,0"/>
+            <RadioButton GroupName="MovieQuality" Content="1080p" IsEnabled="{Binding HasFhd}" IsChecked="{Binding SelectedQuality,  Converter={StaticResource QualityToRadioButtonConverter}, ConverterParameter={x:Static enum:Quality.FHD}}" Margin="0,0,20,0"/>
+            <mui:ModernButton Command="{Binding PlayButtonClicked}" Content="Watch" IconData="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z " IconHeight="18" IconWidth="18" EllipseDiameter="32" EllipseStrokeThickness="4" />
+        </StackPanel>
+    </Grid>
+</UserControl>
