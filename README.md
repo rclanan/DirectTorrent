@@ -16,14 +16,14 @@ After building the project, install the `webtorrent` node module in the output d
 Acknowledgements
 ----------------
 
-Inspiration:
-Popcorn Time - https://popcorntime.io/
+Inspiration:  
+Popcorn Time - https://popcorntime.io/  
 
-Libraries:
-Automapper - http://automapper.org/ 
-Edge.JS - http://tjanczuk.github.io/edge/#/
-Json.NET - http://www.newtonsoft.com/json
-ModernUI - https://github.com/firstfloorsoftware/mui
+Libraries:  
+Automapper - http://automapper.org/  
+Edge.JS - http://tjanczuk.github.io/edge/#/  
+Json.NET - http://www.newtonsoft.com/json  
+ModernUI - https://github.com/firstfloorsoftware/mui  
 MvvmLight - http://www.mvvmlight.net/
 
 
@@ -32,9 +32,10 @@ Participation
 
 All help is welcome.
 
-Submitting Bugs - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)
-Feature Request - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)
+Submitting Bugs - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)  
+Feature Request - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)  
 Submit Patches - [Make a Pull Request](https://github.com/RexGrammer/DirectTorrent/compare)
+
 Contact
 ----------
 
