@@ -1,32 +1,46 @@
 DirectTorrent
 =========
 
-DirectTorrent provides a real-time streaming client for movie torrents. 
-It features an automatic movie retrevial system that streams torrents from Yify Torrents, but also manual torrent entry.
+DirectTorrent provides a real-time streaming client for movie torrents. It features an automatic movie retrevial system that streams torrents from Yify Torrents, but also manual torrent entry.
 
 Version
 ----
 
-# Starting stages of development - WIP
+v1.0
 
 Usage
 --------------
 
-To use the application you must first install the `webtorrent` node module in the output directory.
+After building the project, install the `webtorrent` node module in the output directory. Ignore the long directory names warning, the project uses UNC paths.
+
+Acknowledgements
+----------------
+
+Inspiration:
+Popcorn Time - https://popcorntime.io/
+
+Libraries:
+Automapper - http://automapper.org/ 
+Edge.JS - http://tjanczuk.github.io/edge/#/
+Json.NET - http://www.newtonsoft.com/json
+ModernUI - https://github.com/firstfloorsoftware/mui
+MvvmLight - http://www.mvvmlight.net/
+
 
 Participation
 --------------
 
-N/A
+All help is welcome.
 
-Typos And Grammatical Errors
---------------
+Submitting Bugs - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)
+Feature Request - [Open an Issue](https://github.com/RexGrammer/DirectTorrent/issues/new)
+Submit Patches - [Make a Pull Request](https://github.com/RexGrammer/DirectTorrent/compare)
+Contact
+----------
 
-If you found a typo or a grammatical error please send me an e-mail, so I can fix it. Thank you for your support!
+E-mail: matija.cupic.97@gmail.com
 
 License
 ----
 
 MIT
-
-[1]:https://www.videolan.org/vlc/features.html
